@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Jquery-EasyUI 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="jquery,easyui,spring">
+    <meta http-equiv="description" content="Jquery-EasyUI-Demo">
+    <link rel="stylesheet" type="text/css" href="../resource/plugin/jquery-easyui-1.5.5/themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../resource/plugin/jquery-easyui-1.5.5/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../resource/css/common.css">
+    <style>
+        .north{
+            height:50px;
+            background: url(../resource/img/main/main_north_bg.gif) #7f99be repeat-x center 50%;
+            line-height: 50px;
+            color: #fff;
+            font-family: Verdana,微软雅黑,黑体;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body data-options="scroll:'no'" class="easyui-layout">
+
+<!-- north 上方开始 -->
+<div data-options="region:'north',split:true,border:false" class="north">
+    <span style="padding-left:10px; font-size: 16px; line-height: 50px;vertical-align: middle;">
+        <img src="../resource/img/main/main_sys_logo.png" width="20" />&nbsp;Jquery-EasyUI 管理后台
+    </span>
+</div>
+<!-- north 上方结束 -->
+
+<!-- west 左边开始 -->
+<div data-options="region:'west',title:'导航菜单',split:true,hide:true" style="width: 18%;">
+    <div id="navDiv" data-options="fit:true,border:false" class="easyui-accordion">
+        <div id="navTree" style="padding: 10px;"></div>
+    </div>
+</div>
+<!-- west 左边结束 -->
+
+<!-- center 中间开始 -->
+<div data-options="region:'center'" style="width: 80%;">
+   <!-- <div id="tabs" class="easyui-tabs" data-options="fit:true">
+        <div title="后台操作的界面" data-options="iconCls:'icon-home',closable:false" style="padding:10px;">后台操作界面的说明</div>
+        <div style="text-align: center">这是内容。。。。。。。。。。。</div>
+    </div>-->
+    <div id="contDiv"></div>
+</div>
+<!-- center 中间结束 -->
+
+<!-- south 底部开始 -->
+<div data-options="region:'south',collapsible:false" style="height:30px; padding: 5px;text-align: center">
+    <div style="text-align: center">版权所有，翻版必究</div>
+</div>
+<!-- south 底部结束 -->
+</body>
+</html>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/jquery.min.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/common/validator.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/easyui/validatebox_expand.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/easyui/form_property_expand.js"></script>
+<script type="text/javascript" src="../resource/js/common/base.js"></script>
+<script type="text/javascript" src="../resource/js/common/admin_ui_easyui.js"></script>
+<script type="text/javascript" src="../resource/js/common/ajax.js"></script>
+<script type="text/javascript" src="../resource/js/main.js"></script>
