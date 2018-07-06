@@ -2,9 +2,6 @@ body,div,form,span,p,img{
 	padding: 0px;
 	margin: 0px;
 }
-body{
-	overflow-y: hidden;
-}
 
 .page{
 	width: 100%;
