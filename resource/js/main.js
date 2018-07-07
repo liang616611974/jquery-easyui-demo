@@ -2,8 +2,16 @@ $(document).ready(function () {
     $("#navTree").tree({
         data: navTree,
         onClick: function(node){
-            alert(node.text + node.attributes.url);  // 在用户点击的时候提示
-            $("#contDiv").load(node.attributes.url);
+            //alert(node.text + node.attributes.url);  // 在用户点击的时候提示
+            $("#contDiv").load("./page/dict/dict.html",null,function () {
+                alert("hahah222");
+            });
+          /* $.ajax({
+               url:"./page/dict/dict.html",
+               success:function (data) {
+                   $("#contDiv").html(data);
+               }
+           })*/
             //$("#contDiv").html("<p>测试填充</p>");
         }
     });
