@@ -1,18 +1,8 @@
-$(document).ready(function () {
-    $("#navTree").tree({
+jq(document).ready(function () {
+    jq("#navTree").tree({
         data: navTree,
         onClick: function(node){
-            //alert(node.text + node.attributes.url);  // 在用户点击的时候提示
-            $("#contDiv").load("./page/dict/dict.html",null,function () {
-                alert("hahah222");
-            });
-          /* $.ajax({
-               url:"./page/dict/dict.html",
-               success:function (data) {
-                   $("#contDiv").html(data);
-               }
-           })*/
-            //$("#contDiv").html("<p>测试填充</p>");
+            ajax.load(jq("#contDiv"),node.attributes.url);
         }
     });
 
@@ -27,7 +17,7 @@ var navTree = [{
         "id": 11,
         "text": "字典管理",
         "attributes":{
-            "url":"http://liangfeng.com:63342/jquery-easyui-demo/view/page/dict/dict.html",
+            "url":window.rootPage + "/dict/dict.html",
             "price":100
         },
 
@@ -35,7 +25,7 @@ var navTree = [{
         "id": 12,
         "text": "商品管理",
         "attributes":{
-            "url":window.rootPage + "/dict/dict.html",
+            "url":window.rootPage + "/goods/goods.html",
             "price":100
         },
 
