@@ -87,12 +87,12 @@ var ajax = (function ($) {
             $.ajaxSetup({
                 //url: url, // (默认: 当前页地址) 发送请求的地址。
                 //type: "post", // (默认: "GET") 请求方式 ("POST" 或 "GET")， 默认为 "GET"。注意：其它 HTTP 请求方法，如 PUT 和 DELETE 也可以使用，但仅部分浏览器支持。
-                timeout: timeout,// 设置请求超时时间（毫秒）。此设置将覆盖全局设置。
+                //timeout: timeout,// 设置请求超时时间（毫秒）。此设置将覆盖全局设置。
                 //async: false, // (默认: true) 默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
                 cache: false, // (默认: true) jQuery 1.2 新功能，设置为 false 将不会从浏览器缓存中加载请求信息。
                 //contentType: contentType, // (默认: "application/x-www-form-urlencoded") 发送信息至服务器时内容编码类型。默认值适合大多数应用场合。
                 //data: data, // 请求参数数据
-                //dataType: dataType, // 接收的数据类型
+                //dataType: '', // 接收的数据类型
                 beforeSend: function (xhr) {
                     adminUI.openProgress();
                 },
@@ -114,20 +114,21 @@ var ajax = (function ($) {
                             adminUI.alertWarn("请求超时");
                             break;
                         default:
-                            adminUI.alertWarn("未知错误");
+                            //alert(errorThrown);
+                            adminUI.alertWarn("未知错误：" + errorThrown);
                     }
                 },
 
                 success: function (data) {
-                    if(data.code != '200'){
-                        adminUI.alertErr(data.msg);
+                    if(data.code && data.code!= '200'){
+                        adminUI.alertErr(data);
                         return false;
                     }
                 },
                 complete: function (xhr, status) {
                     setTimeout(function () {
                         adminUI.closeProgress();
-                    }, 2000);
+                    }, 1000);
                 }
             });
         },
@@ -167,7 +168,9 @@ var ajax = (function ($) {
         load: function (obj, url, params, success, error) {
             $.get(url, params, function (data) {
                 obj.html(data);
-                success(data);
+                if(success){
+                    success(data);
+                }
             });
         }
     }

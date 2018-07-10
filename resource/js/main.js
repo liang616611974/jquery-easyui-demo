@@ -1,8 +1,12 @@
 jq(document).ready(function () {
-    jq("#navTree").tree({
+    var $ = window.jq;
+    $("#navTree").tree({
         data: navTree,
         onClick: function(node){
-            ajax.load(jq("#contDiv"),node.attributes.url);
+            ajax.load($("#contDiv"),node.attributes.url,null,
+                function (data) {
+                    console.log(data);
+                });
         }
     });
 
