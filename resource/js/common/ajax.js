@@ -155,23 +155,6 @@ var ajax = (function ($) {
             param.dataType = "json";
             param.success = succeess;
             this.post(param);
-        },
-
-        /**
-         * 加载页面
-         * @param obj jq对象
-         * @param url 页面地址
-         * @param params 请求参数
-         * @param success 成功回调
-         * @param error 失败回调
-         */
-        load: function (obj, url, params, success, error) {
-            $.get(url, params, function (data) {
-                obj.html(data);
-                if(success){
-                    success(data);
-                }
-            });
         }
     }
 })(jQuery);

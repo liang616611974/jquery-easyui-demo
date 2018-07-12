@@ -1,0 +1,30 @@
+.fm-input>span{
+    width: 20%;
+  /*  height: 30px;
+    line-height: 30px;*/
+    display: inline-block;
+    margin-bottom: 10px;
+   /* float: left;
+    display: block;*/
+}
+
+/*.fm-input>span input{
+    height: 20px;
+}*/
+
+.fm-input .rq{
+    margin-left: 3px;
+    height: 25px;
+    line-height: 25px;
+    color: red;
+    vertical-align: middle;
+}
+
+.btn-nav {
+    padding: 10px 10px;
+    text-align: right;
+}
+
+.btn-nav a{
+    margin-right: 10px;
+}

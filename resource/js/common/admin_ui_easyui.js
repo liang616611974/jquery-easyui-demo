@@ -5,37 +5,64 @@ var adminUI = (function($){
     return {
     	
     	/** 文本框 */
-    	textbox : function(id,fucnName,param){
+    	textbox : function (obj,param) {
+            obj.textbox(param);
+        },
+    /*	textbox : function(id,fucnName,param){
     		if(fucnName=='getValue'){
     			return $("#" + id).textbox('getValue');
     		}else if(fucnName=='setValue'){
     			return $("#" + id).textbox('setValue',param);
     		}
-    	},
+    	},*/
     	/** 日期框 */
-    	combobox : function(id,fucnName,param){
+        selectbox : function (obj,param) {
+            obj.combobox(param);
+        },
+    	/*combobox : function(id,fucnName,param){
     		if(fucnName=='getValue'){
     			return $("#" + id).combobox('getValue');
     		}else if(fucnName=='setValue'){
     			return $("#" + id).combobox('setValue',param);
     		}
-    	},
+    	},*/
+
     	/** 日期框 */
-    	datebox : function(id,fucnName,param){
+    	datebox : function (obj,param) {
+            obj.datebox(param);
+        },
+    	/*datebox : function(id,fucnName,param){
     		if(fucnName=='getValue'){
     			return $("#" + id).datebox('getValue');
     		}else if(fucnName=='setValue'){
     			return $("#" + id).datebox('setValue',param);
     		}
-    	},
-    	/** 日期框 */
-    	datetimebox : function(id,fucnName,param){
-    		if(fucnName=='getValue'){
-    			return $("#" + id).datetimebox('getValue');
-    		}else if(fucnName=='setValue'){
-    			return $("#" + id).datetimebox('setValue',param);
-    		}
-    	},
+    	},*/
+
+    	/** 日期时间框 */
+        datetimebox : function (obj,param) {
+            obj.datetimebox(param);
+        },
+
+        /** 数值框 */
+        numberbox : function (obj,param) {
+            obj.numberbox(param);
+        },
+
+        button : function (obj,param) {
+            obj.linkbutton(param);
+        },
+
+        /** 表单处理 */
+        validateForm : function (obj) {
+            return obj.form('validate');
+        },
+        loadForm : function (obj,data) {
+            return obj.form('load',data);
+        },
+        clearForm : function (obj) {
+            return this.form('clear');
+        },
     	
     	/** 数据表格datagrid */
     	datagrid:function(id,fucnName,param){
@@ -49,6 +76,10 @@ var adminUI = (function($){
     			return $("#" + id).datagrid('load',param);
     		}
     	},
+
+        panel : function (obj,param) {
+            return obj.panel(param)
+        },
     	
     	/** 确认框 */
     	confirm:function(title,content,fucn){

@@ -1,11 +1,25 @@
 <div id="dictDiv" class="page">
-    <h1>哈哈哈哈哈11111111111111</h1>
     <div>
         <form id="queryFm">
-            <div class="fm">
-                <span>字典名称：哈哈哈</span>
+            <div class="fm-input">
+                <input name="id" type="hidden" />
+                <span ><input name="name" prop="label:'姓名：';prompt:'请填写姓名';type:'text'" /><label class="rq">*</label></span>
+                <span ><input id="date" prop="label:'日期：';prompt:'请选择日期';type:'date'"/><label class="rq">*</label></span>
+                <span><input name="type" prop="label:'类型：';prompt:'请填写类型';type:'select'" /></span>
+                <span><input name="amount" prop="label:'金额：';prompt:'请填写金额';type:'number'" /></span>
+                <span ><input name="name" prop="label:'姓名：';prompt:'请填写姓名'" /><label class="rq">*</label></span>
+                <span ><input name="date" prop="label:'日期：';prompt:'请填写姓名'" /><label class="rq">*</label></span>
+                <span><input name="type" prop="label:'类型：';prompt:'请填写类型'" /></span>
+                <span><input name="amount" prop="label:'金额：';prompt:'请填写金额'" /></span>
             </div>
         </form>
     </div>
+
+    <div class="btn-nav">
+        <a href="#" id="qryBtn" class="button-orange">查询</a>
+        <a href="#" id="resetBtn" class="button-orange">重置</a>
+        <a href="#" id="addBtn" class="button-orange">新增</a>
+        <a href="#" id="exportBtn" class="button-orange">新增</a>
+    </div>
 </div>
-<script type="text/javascript" src="/jquery-easyui-demo/view/script/dict/dict.js"></script>
+<script type="text/javascript" src="./script/dict/dict.js"></script>

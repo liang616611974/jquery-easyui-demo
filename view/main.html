@@ -8,16 +8,17 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="jquery,easyui,spring">
     <meta http-equiv="description" content="Jquery-EasyUI-Demo">
-    <link rel="stylesheet" type="text/css" href="../resource/plugin/jquery-easyui-1.5.5/themes/metro-blue/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../resource/plugin/jquery-easyui-1.5.5/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../resource/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/plugin/jquery-easyui-1.5.4/themes/bootstrap/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/plugin/jquery-easyui-1.5.4/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/css/form.css"/>
     <style>
-        .north{
-            height:50px;
+        .north {
+            height: 50px;
             background: url(../resource/img/main/main_north_bg.gif) #7f99be repeat-x center 50%;
             line-height: 50px;
             color: #fff;
-            font-family: Verdana,微软雅黑,黑体;
+            font-family: Verdana, 微软雅黑, 黑体;
             margin-top: 5px;
             overflow: hidden;
         }
@@ -28,9 +29,9 @@
 
 <!-- north 上方开始 -->
 <div data-options="region:'north',split:true,border:false" class="north">
-    <span style="padding-left:10px; font-size: 16px; ">
-        <img src="../resource/img/main/main_sys_logo.png" style="width:25px;vertical-align: middle;" />&nbsp;Jquery-EasyUI 管理后台
-    </span>
+        <span style="padding-left:10px; font-size: 16px; ">
+            <img src="../resource/img/main/main_sys_logo.png" style="width:25px;vertical-align: middle;"/>&nbsp;Jquery-EasyUI 管理后台
+        </span>
 </div>
 <!-- north 上方结束 -->
 
@@ -44,12 +45,13 @@
 
 <!-- center 中间开始 -->
 <div data-options="region:'center'" style="width: 80%;">
-   <!-- <div id="tabs" class="easyui-tabs" data-options="fit:true">
-        <div title="后台操作的界面" data-options="iconCls:'icon-home',closable:false" style="padding:10px;">后台操作界面的说明</div>
-        <div style="text-align: center">这是内容。。。。。。。。。。。</div>
-    </div>-->
-    <!--class="easyui-layout panel-noscroll" -->
-    <div id="contDiv"  data-options="fit:true"></div>
+    <!-- <div id="tabs" class="easyui-tabs" data-options="fit:true">
+         <div title="后台操作的界面" data-options="iconCls:'icon-home',closable:false" style="padding:10px;">后台操作界面的说明</div>
+         <div style="text-align: center">这是内容。。。。。。。。。。。</div>
+     </div>-->
+    <div id="contDiv" class="easyui-layout panel-noscroll" data-options="fit:true">
+        <input id="dd" type="text" required="required" class="easyui-datebox" data-options="currentText:'Today'"> </input>
+    </div>
 </div>
 <!-- center 中间结束 -->
 
@@ -58,16 +60,32 @@
     <div style="text-align: center">版权所有，翻版必究</div>
 </div>
 <!-- south 底部结束 -->
+
 </body>
 </html>
-<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/jquery.min.js"></script>
-<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.5/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="../resource/plugin/expand/common/validator.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/jquery.min.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../resource/js/util/validator.js"></script>
 <script type="text/javascript" src="../resource/plugin/expand/easyui/validatebox_expand.js"></script>
-<script type="text/javascript" src="../resource/plugin/expand/easyui/form_property_expand.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/easyui/input_expand.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/common/property_expand.js"></script>
 <script type="text/javascript" src="../resource/js/common/base.js"></script>
 <script type="text/javascript" src="../resource/js/common/admin_ui_easyui.js"></script>
 <script type="text/javascript" src="../resource/js/common/ajax.js"></script>
+<script type="text/javascript" src="../resource/js/common/system.js"></script>
 <script type="text/javascript" src="../resource/js/main.js"></script>
 <script type="text/javascript" src="../view/script/page_data.js"></script>
+
+<!--<script type="text/javascript" src="../resource/js/util/validator.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/easyui/validatebox_expand.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/easyui/input_expand.js"></script>
+<script type="text/javascript" src="../resource/plugin/expand/common/property_expand.js"></script>
+-->
+<!--
+<script type="text/javascript" src="../resource/js/common/base.js"></script>
+<script type="text/javascript" src="../resource/js/common/admin_ui_easyui.js"></script>
+<script type="text/javascript" src="../resource/js/common/ajax.js"></script>
+<script type="text/javascript" src="../resource/js/common/system.js"></script>
+<script type="text/javascript" src="../resource/js/main.js"></script>
+<script type="text/javascript" src="../view/script/page_data.js"></script>-->
