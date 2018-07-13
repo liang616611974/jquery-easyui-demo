@@ -5,8 +5,12 @@ var adminUI = (function($){
     return {
     	
     	/** 文本框 */
-    	textbox : function (obj,param) {
-            obj.textbox(param);
+    	textbox : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.textbox(param1);
+                return;
+            }
+            obj.textbox(param1,param2);
         },
     /*	textbox : function(id,fucnName,param){
     		if(fucnName=='getValue'){
@@ -16,41 +20,56 @@ var adminUI = (function($){
     		}
     	},*/
     	/** 日期框 */
-        selectbox : function (obj,param) {
-            obj.combobox(param);
+        selectbox : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.combobox(param1);
+                return;
+            }
+            obj.combobox(param1,param2);
         },
-    	/*combobox : function(id,fucnName,param){
-    		if(fucnName=='getValue'){
-    			return $("#" + id).combobox('getValue');
-    		}else if(fucnName=='setValue'){
-    			return $("#" + id).combobox('setValue',param);
-    		}
-    	},*/
 
     	/** 日期框 */
-    	datebox : function (obj,param) {
-            obj.datebox(param);
+    	datebox : function (obj,param1,param2) {
+    	    if(arguments<=2){
+                obj.datebox(param1);
+                return;
+            }
+            obj.datebox(param1,param2);
+
         },
-    	/*datebox : function(id,fucnName,param){
-    		if(fucnName=='getValue'){
-    			return $("#" + id).datebox('getValue');
-    		}else if(fucnName=='setValue'){
-    			return $("#" + id).datebox('setValue',param);
-    		}
-    	},*/
 
     	/** 日期时间框 */
-        datetimebox : function (obj,param) {
-            obj.datetimebox(param);
+        datetimebox : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.datetimebox(param1);
+                return;
+            }
+            obj.datetimebox(param1,param2)
         },
 
         /** 数值框 */
-        numberbox : function (obj,param) {
-            obj.numberbox(param);
+        numberbox : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.numberbox(param1);
+                return;
+            }
+            obj.numberbox(param1,param2)
         },
 
-        button : function (obj,param) {
-            obj.linkbutton(param);
+        button : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.linkbutton(param1);
+                return;
+            }
+            obj.linkbutton(param1,param2)
+        },
+
+        filebox : function (obj,param1,param2) {
+            if(arguments<=2){
+                obj.filebox(param1);
+                return;
+            }
+            obj.filebox(param1,param2);
         },
 
         /** 表单处理 */

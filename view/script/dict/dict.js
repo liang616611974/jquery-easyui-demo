@@ -1,18 +1,19 @@
 ;
 page.dict.init = {
-    init: function () {
+    initPage: function () {
         var that = page.dict.fucn;
-        this.defineInput(that);
-        this.defineDg(that);
+        this.initForm(that);
+        this.initDg(that);
     },
 
-    defineInput: function (that, action, obj) {
-        system.defineInput(that.get("queryFm"));
-        adminUI.button(that.root.find(".btn-nav a"),{width:120});
-
+    initForm: function (that, action, obj) {
+        system.initInput(that.get("queryFm"));
+        system.initBtn(that.root.find(".btn-nav-right"))
+        //adminUI.button(that.root.find(".btn-nav-right").find("a[prop]"));
+        adminUI.datebox(that.get("date"), "setValue", "2017-07-07");
     },
 
-    defineDg: function (that, action, obj) {
+    initDg: function (that, action, obj) {
 
     }
 }
@@ -48,6 +49,6 @@ jq(document).ready(function () {
     /*jq("#date").datebox({
         //currentText : "Today"
     });*/
-   page.dict.init.init();
+   page.dict.init.initPage();
 });
 

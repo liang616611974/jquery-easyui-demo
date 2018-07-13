@@ -20,11 +20,25 @@
     vertical-align: middle;
 }
 
-.btn-nav {
+.btn-nav-left {
     padding: 10px 10px;
+    text-align: left;
+}
+
+.btn-nav-right {
+    padding: 10px 25px 0px 0px;
     text-align: right;
 }
 
-.btn-nav a{
-    margin-right: 10px;
+.btn-nav-center {
+    padding: 10px 10px;
+    text-align: center;
 }
+
+.btn-nav-right a:not(:last-child){
+    margin-right: 20px;
+}
+
+/*.btn-nav-right a:not(:last-child) {
+    margin-right: 20px;
+}*/
