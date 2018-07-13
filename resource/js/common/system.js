@@ -1,6 +1,10 @@
 ;
 var system = (function () {
-    var dicts;
+    var labelPosition = "top"; // 输入框标签位置
+    var labelWidth = 50; // 输入框标签长度
+    var inputWidth = 260; // 输入框长度
+    var btnWidth = 120; // 按钮长度
+    var dicts; // 字典数据集合
     function toJsonStr(prop) {
         if(!prop || prop == '') {
             return "{}";
@@ -25,14 +29,14 @@ var system = (function () {
             }
             var type = prop.type;
             prop.type = null; // 无关属性要清除，否则会有影响。
+            if(!prop.labelWidth){
+                prop.labelWidth = labelWidth;
+            }
             if(!prop.labelPosition){
-                prop.labelPosition = 'top';
+                prop.labelPosition = labelPosition;
             }
             if(!prop.width){
-                prop.width = 260;
-            }
-            if(!prop.labelWidth){
-                prop.labelWidth = 50;
+                prop.width = inputWidth;
             }
             //console.log(prop);
             if(type == "text"){
@@ -58,16 +62,25 @@ var system = (function () {
             }
         }
     }
+    
+    function initBtns() {
+        
+    }
 
     return {
         toJson : function (str) {
             console.log(toJsonStr(str));
             return JSON.parse(toJsonStr(str));
         },
-        defineInput : function (fm) {
+        defineInput : function (scope) {
             //console.log(fm);
-            var objs = fm.find("input[prop]");
+            var objs = scope.find("input[prop]");
             initInputs(objs);
+        },
+        defineBtn : function (scope) {
+            var objs = scope.find("a[prop]");
+            var prop = {};
+            porp.width = btnWidth;
         }
     }
 })();
