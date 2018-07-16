@@ -31,7 +31,7 @@ page.dict.init = {
             //toolbar: '#dictDiv #tb',
             //title : "字典列表",
             rownumbers:true,
-            fit:true,
+            //fit:true,
             //url : '/dict/dict/query',
             data : data,
             queryParams : {},
@@ -46,9 +46,68 @@ page.dict.init = {
                 {field:'oper',title:'操作',width:400,formatter:that.formatDgOper}
             ]],
             onLoadSuccess : function (data) {
+                /*var h1 = that.root.outerHeight(true);
+                var h2 = that.get("fmBtnDiv").outerHeight(true);
+                var h3 = that.get("dgDiv").height(h1 - h2 - 240);
+                var h4 = that.root.find(".datagrid-view .datagrid-body").height(h1 - h2 - 240);
+                h3 =  that.get("dgDiv").height();
+                h4 =  that.get("dgDiv .datagrid-view").height();
+                console.log(h1);
+                console.log(h2);
+                console.log(h3);
+                console.log(h4);
+                adminUI.datagrid(that.dg,"resize");*/
 
+                //that.get("dgDiv").find(".dg-contain .datagrid-body").css("height",   "400px");
+
+               /* alert("aaa");
+                that.get("dgDiv").find(".panel").find(".datagrid-wrap").css("height", "400px");*/
+                /*setTimeout(function () {
+                    var h1 = that.root.outerHeight(true);
+                    var h2 = that.get("fmBtnDiv").outerHeight(true);
+                    //that.get("dgDiv").height(h1 - h2 - 40);
+                    //that.get("dgDiv .datagrid-view").height(h1 - h2 - 40);
+                    that.get("dgDiv").find(".datagrid-view").css("height", (h1 - h2 - 95) + "px");
+                    console.log(jq("#dgDiv").find(".datagrid-view").height());
+                    that.get("dgDiv").find(".datagrid-body").css("height",  (h1 - h2 - 135) + "px");
+                }, 1000);*/
+            },
+            view : {
+                onAfterRender : function () {
+                    var h1 = that.root.outerHeight(true);
+                    var h2 = that.get("fmBtnDiv").outerHeight(true);
+                    //that.get("dgDiv").height(h1 - h2 - 40);
+                    //that.get("dgDiv .datagrid-view").height(h1 - h2 - 40);
+                    that.get("dgDiv").find(".datagrid-view").css("height", (h1 - h2 - 95) + "px");
+                    console.log(jq("#dgDiv").find(".datagrid-view").height());
+                    that.get("dgDiv").find(".datagrid-body").css("height",  (h1 - h2 - 135) + "px");
+                }
             }
+           /* onResizeColumn :function () {
+                var h1 = that.root.outerHeight(true);
+                var h2 = that.get("fmBtnDiv").outerHeight(true);
+                //that.get("dgDiv").height(h1 - h2 - 40);
+                //that.get("dgDiv .datagrid-view").height(h1 - h2 - 40);
+                that.get("dgDiv").find(".datagrid-view").css("height", (h1 - h2 - 95) + "px");
+                console.log(jq("#dgDiv").find(".datagrid-view").height());
+                that.get("dgDiv").find(".datagrid-body").css("height",  (h1 - h2 - 135) + "px");
+            }*/
         });
+
+
+        //that.get("dgDiv").find(".panel").find(".datagrid-wrap").css("height", "400px");
+        //that.root.find(".dg-contain").height(400);
+       /* var h1 = that.root.outerHeight(true);
+        var h2 = that.get("fmBtnDiv").outerHeight(true);
+        var h3 = that.get("dgDiv").height(h1 - h2 - 140);
+        var h4 = that.get("dgDiv .datagrid-view").height(h1 - h2 - 140);
+        h3 =  that.get("dgDiv").height();
+        h4 =  that.get("dgDiv .datagrid-view").height();
+        console.log(h1);
+        console.log(h2);
+        console.log(h3);
+        console.log(h4);
+        adminUI.datagrid(that.dg,"resize");*/
     }
 }
 

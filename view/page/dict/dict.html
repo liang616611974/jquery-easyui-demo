@@ -1,29 +1,31 @@
 <div id="dictDiv" class="page">
-    <div>
-        <form id="queryFm">
-            <div class="fm-input">
-                <input name="id" type="hidden" />
-                <span ><input name="name" prop="label:'姓名：';prompt:'请填写姓名';type:'text'" /><label class="rq">*</label></span>
-                <span ><input id="date" prop="label:'日期：';prompt:'请选择日期';type:'date'"/><label class="rq">*</label></span>
-                <span><input name="type" prop="label:'类型：';prompt:'请填写类型';type:'select'" /></span>
-                <span><input name="amount" prop="label:'金额：';prompt:'请填写金额';type:'number'" /></span>
-                <span ><input name="name" prop="label:'姓名：';prompt:'请填写姓名'" /><label class="rq">*</label></span>
-                <span ><input name="date" prop="label:'日期：';prompt:'请填写姓名'" /><label class="rq">*</label></span>
-                <span><input name="type" prop="label:'类型：';prompt:'请填写类型'" /></span>
-                <span><input name="amount" prop="label:'金额：';prompt:'请填写金额'" /></span>
-            </div>
-            <div><input name="amount" prop="label:'机密文件：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file'" /></div>
-        </form>
+    <div id="fmBtnDiv">
+        <div>
+            <form id="queryFm">
+                <div class="fm-input">
+                    <input name="id" type="hidden"/>
+                    <span><input name="name" prop="label:'姓名：';prompt:'请填写姓名';type:'text'"/><label class="rq">*</label></span>
+                    <span><input id="date" prop="label:'日期：';prompt:'请选择日期';type:'date'"/><label class="rq">*</label></span>
+                    <span><input name="type" prop="label:'类型：';prompt:'请填写类型';type:'select'"/></span>
+                    <span><input name="amount" prop="label:'金额：';prompt:'请填写金额';type:'number'"/></span>
+                    <span><input name="name" prop="label:'姓名：';prompt:'请填写姓名'"/><label class="rq">*</label></span>
+                    <span><input name="date" prop="label:'日期：';prompt:'请填写姓名'"/><label class="rq">*</label></span>
+                    <span><input name="type" prop="label:'类型：';prompt:'请填写类型'"/></span>
+                    <span><input name="amount" prop="label:'金额：';prompt:'请填写金额'"/></span>
+                </div>
+                <div><input name="amount" prop="label:'机密文件：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file'"/></div>
+            </form>
+        </div>
+
+        <div class="btn-nav-right">
+            <a id="qryBtn" prop="event:'queryDg'">查询</a>
+            <a id="resetBtn" prop="event:'resetFm'">重置</a>
+            <a id="addBtn" prop="event:'add'">新增</a>
+            <a id="exportBtn" prop="event:'export'">导出</a>
+        </div>
     </div>
 
-    <div class="btn-nav-right">
-        <a id="qryBtn" prop="event:'queryDg'" >查询</a>
-        <a id="resetBtn" prop="event:'resetFm'" >重置</a>
-        <a id="addBtn" prop="event:'add'" >新增</a>
-        <a id="exportBtn" prop="event:'export'" >导出</a>
-    </div>
-
-    <div class="dg-contain">
+    <div id="dgDiv" class="dg-contain">
         <table id="dg"></table>
     </div>
 </div>

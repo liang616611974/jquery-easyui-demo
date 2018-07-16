@@ -45,19 +45,23 @@
 
 .dg-contain {
     padding-top: 10px;
-    width: 100%;
-    height: 100%;
+   /* width: 100%;
+    height: 100%;*/
 }
 
 .dg-contain table {
     /*align:center;*/
     text-align: center;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .dg-contain table tr{
     height: 48px;
 }
+
+/*.dg-contain .datagrid-body{
+    height: 400px;
+}*/
 
 .dg-opt-btn{
     margin-right: 15px;
