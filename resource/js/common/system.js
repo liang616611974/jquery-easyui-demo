@@ -7,6 +7,7 @@ var system = (function ($) {
         var inputWidth = 260; // 输入框长度
         var btnWidth = 120; // 按钮长度
         var btnClass = "btn1 btn2"; // 按钮样式
+        var dgOptBtnClass = 'dg-opt-btn'; // 表格操作按钮样式
         var dicts; // 字典数据集合
 
         /**
@@ -70,7 +71,7 @@ var system = (function ($) {
                     prop.precision = 2;
                     prop.groupSeparator = ',';
                     adminUI.numberbox(obj, prop);
-                    console.log(obj);
+                    //console.log(obj);
                     // 控制显示文本
                     obj.next("span").children("input").css("text-align","right");
                 } else if(type == "file"){
@@ -123,6 +124,39 @@ var system = (function ($) {
             initBtn: function (scope) {
                 var objs = scope.find(btnSelector);
                 defineBtns(objs);
+            },
+
+            /**
+             * 获取表格操作按钮
+             * @param title 显示内容
+             * @param event 触发事件
+             * @returns {string}
+             */
+            getOptBtn:function (param) {
+                // {title:"修改",event:""}
+                if(!param || !param.isShow){
+                    return "";
+                }
+                return "<a href='#' title='" + param.title + "' class='" + dgOptBtnClass + "' onclick='" + param.event + "'> " + param.title + " </a>";
+            },
+            getFucnAllName : function (fucnName,params) {
+                var fucnAllName = fucnName;
+                if(!params) {
+                    return fucnAllName + "()";
+                }
+                fucnAllName += "(";
+                for(var i=0; i<params.length; i++){
+                    var param = params[i];
+                    if(isNaN(param)){
+                        param = "\"" + param + "\"";
+                    }
+                    if(i==params.length -1) {
+                        fucnAllName += param + ")";
+                        continue;
+                    }
+                    fucnAllName += param + ",";
+                }
+                return fucnAllName;
             }
         }
     }

@@ -6,7 +6,7 @@ var adminUI = (function($){
     	
     	/** 文本框 */
     	textbox : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.textbox(param1);
                 return;
             }
@@ -21,7 +21,7 @@ var adminUI = (function($){
     	},*/
     	/** 日期框 */
         selectbox : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.combobox(param1);
                 return;
             }
@@ -30,7 +30,7 @@ var adminUI = (function($){
 
     	/** 日期框 */
     	datebox : function (obj,param1,param2) {
-    	    if(arguments<=2){
+    	    if(arguments.length<=2){
                 obj.datebox(param1);
                 return;
             }
@@ -40,7 +40,7 @@ var adminUI = (function($){
 
     	/** 日期时间框 */
         datetimebox : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.datetimebox(param1);
                 return;
             }
@@ -49,23 +49,25 @@ var adminUI = (function($){
 
         /** 数值框 */
         numberbox : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.numberbox(param1);
                 return;
             }
             obj.numberbox(param1,param2)
         },
 
+        /** 按钮 */
         button : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.linkbutton(param1);
                 return;
             }
             obj.linkbutton(param1,param2)
         },
 
+        /** 文件选择框 */
         filebox : function (obj,param1,param2) {
-            if(arguments<=2){
+            if(arguments.length<=2){
                 obj.filebox(param1);
                 return;
             }
@@ -84,16 +86,15 @@ var adminUI = (function($){
         },
     	
     	/** 数据表格datagrid */
-    	datagrid:function(id,fucnName,param){
-    		if(fucnName=='show'){
-    			return $("#" + id).datagrid(param);
-    		}else if(fucnName=='getSelected'){
-    			return $("#" + id).datagrid('getSelected');
-    		}else if(fucnName=='reload'){
-    			return $("#" + id).datagrid('reload');
-    		}else if(fucnName=='load'){
-    			return $("#" + id).datagrid('load',param);
-    		}
+    	datagrid:function (obj,param1,param2){
+            if(arguments.length<=2){
+                param1.onLoadError = function () {
+                    adminUI.alertErr("加载列表数据错误");
+                };
+                obj.datagrid(param1);
+                return;
+            }
+            obj.datagrid(param1,param2);
     	},
 
         panel : function (obj,param) {
@@ -108,8 +109,8 @@ var adminUI = (function($){
     	},
     	
         /** 弹窗alert */
-        alert: function(title, msg, level){
-            $.messager.alert(title, msg, level);
+        alert: function(title, msg, icon, fn){
+            $.messager.alert(title, msg, icon, fn);
         },
         alertInfo: function(msg){
             $.messager.alert("提示", msg, "info");
