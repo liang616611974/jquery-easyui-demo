@@ -28,7 +28,7 @@ page.dict.init = {
             {id :5,name:"小四",date:'2018-05-01',type:"女",amount:'5000'}
         ];
         adminUI.datagrid(that.dg,{
-            //toolbar: '#dictDiv #tb',
+            toolbar: '.dg-toolbar',
             //title : "字典列表",
             rownumbers:true,
             //fit:true,
@@ -43,7 +43,7 @@ page.dict.init = {
                 {field:'date',title:'日期',width:200},
                 {field:'type',title:'类型',width:100},
                 {field:'amount',title:'金额',width:200},
-                {field:'oper',title:'操作',width:400,formatter:that.formatDgOper}
+                {field:'oper',title:'操作',width:800,formatter:that.formatDgOper}
             ]],
             onLoadSuccess : function (data) {
                 /*var h1 = that.root.outerHeight(true);
@@ -72,7 +72,7 @@ page.dict.init = {
                     that.get("dgDiv").find(".datagrid-body").css("height",  (h1 - h2 - 135) + "px");
                 }, 1000);*/
             },
-            view : {
+            /*view : {
                 onAfterRender : function () {
                     var h1 = that.root.outerHeight(true);
                     var h2 = that.get("fmBtnDiv").outerHeight(true);
@@ -82,7 +82,7 @@ page.dict.init = {
                     console.log(jq("#dgDiv").find(".datagrid-view").height());
                     that.get("dgDiv").find(".datagrid-body").css("height",  (h1 - h2 - 135) + "px");
                 }
-            }
+            }*/
            /* onResizeColumn :function () {
                 var h1 = that.root.outerHeight(true);
                 var h2 = that.get("fmBtnDiv").outerHeight(true);
