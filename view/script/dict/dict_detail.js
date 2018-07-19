@@ -1,16 +1,11 @@
 ;
 ;
-page.dict = {
-    init : {}, // 初始化对象
-    fucn : {}, // 函数对象
-    action : "init", // 页面动作
-    data : {}, // 对象数据
-};
-page.dict.init = {
+page.dictDetail = {};
+page.dictDetail.init = {
     initPage: function () {
-        var that = page.dict.fucn;
+        var that = page.dictDetail.fucn;
         this.initForm(that);
-        this.initDg(that);
+        //this.initDg(that);
     },
 
     initForm: function (that, action, obj) {
@@ -52,7 +47,7 @@ page.dict.init = {
                 {field: 'amount', title: '金额', width: 200},
                 {field: 'oper', title: '操作', width: 800, formatter: function (value, row, index) {
                         return system.getOptBtn({title: "修改", isShow: true, event: that.getFucnAllName("add", [1, "aa"])})
-                            + system.getOptBtn({title: "详情", isShow: true, event: that.getFucnAllName("detail",[index])})
+                            + system.getOptBtn({title: "详情", isShow: true, event: that.getFucnAllName("detail",[row.id])})
                             + system.getOptBtn({title: "删除", isShow: false, event: that.getFucnAllName("delete")});
                     },}
             ]],
@@ -122,8 +117,8 @@ page.dict.init = {
     }
 }
 
-page.dict.fucn = {
-    name: "page.dict.fucn",
+page.dictDetail.fucn = {
+    name: "page.dictDetail.fucn",
     root: jq("#dictDiv"),
     dg: jq("#dictDiv").find("#dg"),
     get: function (id) {
@@ -142,17 +137,10 @@ page.dict.fucn = {
     add: function (p1, p2) {
         adminUI.alertInfo("新增成功" + p1 + p2);
     },
-    detail : function (index) {
-        var row = system.getDgRow(this.dg,index)
-        console.log(row);
-        adminUI.window(this.get("dictWin"),{
-            collapsible : false,
-            minimizable : false,
-            inline : true,
-            constrain : true,
-            title:"项目详情--" + row.name,
-            href:"page/dict/dict_detail.html"
-        });
+    detail : function (id) {
+        adminUI.window(this.get("dictWin"),function () {
+            
+        })
     },
     delete: function () {
         adminUI.alertInfo("删除成功");
@@ -171,6 +159,6 @@ page.dict.fucn = {
 }*/
 
 jq(document).ready(function () {
-    page.dict.init.initPage();
+    page.dictDetail.init.initPage();
 });
 

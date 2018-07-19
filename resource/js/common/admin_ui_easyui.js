@@ -7,10 +7,9 @@ var adminUI = (function($){
     	/** 文本框 */
     	textbox : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.textbox(param1);
-                return;
+                return obj.textbox(param1);
             }
-            obj.textbox(param1,param2);
+            return obj.textbox(param1,param2);
         },
     /*	textbox : function(id,fucnName,param){
     		if(fucnName=='getValue'){
@@ -22,56 +21,50 @@ var adminUI = (function($){
     	/** 日期框 */
         selectbox : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.combobox(param1);
-                return;
+                return obj.combobox(param1);
             }
-            obj.combobox(param1,param2);
+            return obj.combobox(param1,param2);
         },
 
     	/** 日期框 */
     	datebox : function (obj,param1,param2) {
     	    if(arguments.length<=2){
-                obj.datebox(param1);
-                return;
+                return obj.datebox(param1);
             }
-            obj.datebox(param1,param2);
+            return obj.datebox(param1,param2);
 
         },
 
     	/** 日期时间框 */
         datetimebox : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.datetimebox(param1);
-                return;
+                return obj.datetimebox(param1);
             }
-            obj.datetimebox(param1,param2)
+            return obj.datetimebox(param1,param2);
         },
 
         /** 数值框 */
         numberbox : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.numberbox(param1);
-                return;
+                return obj.numberbox(param1);
             }
-            obj.numberbox(param1,param2)
+            return obj.numberbox(param1,param2)
         },
 
         /** 按钮 */
         button : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.linkbutton(param1);
-                return;
+                return obj.linkbutton(param1);
             }
-            obj.linkbutton(param1,param2)
+            return obj.linkbutton(param1,param2)
         },
 
         /** 文件选择框 */
         filebox : function (obj,param1,param2) {
             if(arguments.length<=2){
-                obj.filebox(param1);
-                return;
+                return obj.filebox(param1);
             }
-            obj.filebox(param1,param2);
+            return obj.filebox(param1,param2);
         },
 
         /** 表单处理 */
@@ -91,11 +84,20 @@ var adminUI = (function($){
                 param1.onLoadError = function () {
                     adminUI.alertErr("加载列表数据错误");
                 };
-                obj.datagrid(param1);
-                return;
+                return obj.datagrid(param1);
+
             }
-            obj.datagrid(param1,param2);
+            return obj.datagrid(param1,param2);
     	},
+
+        /** 窗口 */
+        window : function (obj,param1,param2) {
+            if(arguments.length<=2){
+                return obj.window(param1);
+                return
+            }
+            return obj.window(param1,param2)
+        },
 
         panel : function (obj,param) {
             return obj.panel(param)

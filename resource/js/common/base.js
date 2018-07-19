@@ -1,5 +1,6 @@
 ;
 var jq = jQuery.noConflict(); // 重命名Jquery
+var page = {}; // 存放页面数据的全局变量
 var base = (function () {
     var prjUrl = null;
     return {

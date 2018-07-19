@@ -157,6 +157,10 @@ var system = (function ($) {
                     fucnAllName += param + ",";
                 }
                 return fucnAllName;
+            },
+            getDgRow:function (obj,index) {
+                adminUI.datagrid(obj,'selectRow',index);
+                return adminUI.datagrid(obj,"getSelected");
             }
         }
     }
