@@ -1,5 +1,6 @@
 ;
 ;
+page.id = "dict"
 page.dict = {
     init : {}, // 初始化对象
     fucn : {}, // 函数对象
@@ -15,7 +16,7 @@ page.dict.init = {
 
     initForm: function (that, action, obj) {
         system.initInput(that.get("queryFm"));
-        system.initBtn(that.root.find(".btn-nav-right"));
+        system.initBtn(that.root.find(".btn-nav-right"),that.name());
         //adminUI.button(that.root.find(".btn-nav-right").find("a[prop]"));
         adminUI.datebox(that.get("date"), "setValue", "2017-07-07");
     },
@@ -51,7 +52,7 @@ page.dict.init = {
                 {field: 'type', title: '类型', width: 100},
                 {field: 'amount', title: '金额', width: 200},
                 {field: 'oper', title: '操作', width: 800, formatter: function (value, row, index) {
-                        return system.getOptBtn({title: "修改", isShow: true, event: that.getFucnAllName("add", [1, "aa"])})
+                        return system.getOptBtn({title: "修改", isShow: true, event: that.getFucnAllName("modify", [1, "aa"])})
                             + system.getOptBtn({title: "详情", isShow: true, event: that.getFucnAllName("detail",[index])})
                             + system.getOptBtn({title: "删除", isShow: false, event: that.getFucnAllName("delete")});
                     },}
@@ -123,9 +124,10 @@ page.dict.init = {
 }
 
 page.dict.fucn = {
-    name: "page.dict.fucn",
-    root: jq("#dictDiv"),
-    dg: jq("#dictDiv").find("#dg"),
+    name: "page." + page.id + ".fucn",
+    root: jq("#" + page.id + "Div"),
+    dg: jq("#" + page.id + "Div").find("#dg"),
+    window : jq("#" + page.id + "Win"),
     get: function (id) {
         //console.log(this.name);
         return this.root.find("#" + id);
@@ -142,14 +144,23 @@ page.dict.fucn = {
     add: function (p1, p2) {
         adminUI.alertInfo("新增成功" + p1 + p2);
     },
+    modify : function (index) {
+        var row = system.getDgRow(this.dg,index);
+        alert("修改");
+    },
     detail : function (index) {
         var row = system.getDgRow(this.dg,index)
-        console.log(row);
-        adminUI.window(this.get("dictWin"),{
+        //console.log(row);
+        adminUI.window(this.window,{
             collapsible : false,
             minimizable : false,
+            maximizable : false,
             inline : true,
             constrain : true,
+            zIndex : 9000,
+            width : "100%",
+            height : "100%",
+            //modal : true,
             title:"项目详情--" + row.name,
             href:"page/dict/dict_detail.html"
         });

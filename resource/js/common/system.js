@@ -87,7 +87,7 @@ var system = (function ($) {
          * 定义按钮集合
          * @param objs
          */
-        function defineBtns(objs) {
+        function defineBtns(objs,fucnName) {
             var $ = jq;
             for (var i = 0; i < objs.length; i++) {
                 var obj = $(objs[i]);
@@ -100,6 +100,9 @@ var system = (function ($) {
                 obj.attr("href","#");
                 // 2.加上样式
                 obj.addClass(btnClass);
+                // 3.加上点击事件  eval(fucnName + "()");那就是调用该函数
+                prop.onClick = eval(fucnName + "." + prop.event);
+                //console.log(prop);
                 // 初始化
                 adminUI.button(obj,prop);
             }
@@ -121,9 +124,9 @@ var system = (function ($) {
              * 初始化指定范围内的按钮
              * @param scope
              */
-            initBtn: function (scope) {
+            initBtn: function (scope,fucnName) {
                 var objs = scope.find(btnSelector);
-                defineBtns(objs);
+                defineBtns(objs,fucnName);
             },
 
             /**
