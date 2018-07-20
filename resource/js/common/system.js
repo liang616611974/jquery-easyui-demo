@@ -1,5 +1,6 @@
 ;
 var system = (function ($) {
+        var root = $("#contDiv");
         var inputSelector = "input[prop]";
         var btnSelector = "a[prop]";
         var labelPosition = "top"; // 输入框标签位置
@@ -109,6 +110,37 @@ var system = (function ($) {
         }
 
         return {
+            /**
+             * 初始化页面变量
+             * @param id 页面的id,唯一标识
+             * @returns {{fucnName: string, root, dg: number | * | {}, window, get: get, getFucnAllName: getFucnAllName, init: {}, fucn: {}, action: string, data: {}}}
+             */
+            initPage : function (id) {
+                // 添加子窗口Div
+                if($("#" + id + "Win").length<=0){
+                    //alert("不存在");
+                    root.append("<div id='" + id +"Win'></div>");
+                }
+                var page = {
+                    id:id,
+                    fucnName: "page." + id + ".fucn", //
+                    root: $("#" + id + "Div"),
+                    dg: $("#" + id + "Div").find("#dg"),
+                    window : $("#" + id + "Win"),
+                    get: function (id) {
+                        //console.log(this.name);
+                        return this.root.find("#" + id);
+                    },
+                    getFucnAllName: function (fucnName, params) {
+                        return system.getFucnAllName(this.fucnName + "." + fucnName, params);
+                    },
+                    init : {}, // 初始化对象
+                    fucn : {}, // 函数对象
+                    action : "init", // 页面动作
+                    data : {}, // 对象数据
+                };
+                return page;
+            },
 
             /**
              * 初始化指定范围内的输入框
@@ -124,36 +156,42 @@ var system = (function ($) {
              * 初始化指定范围内的按钮
              * @param scope
              */
-            initBtn: function (scope,fucnName) {
+            initBtn: function (scope, fucnName) {
                 var objs = scope.find(btnSelector);
-                defineBtns(objs,fucnName);
+                defineBtns(objs, fucnName);
             },
 
             /**
              * 获取表格操作按钮
              * @param title 显示内容
              * @param event 触发事件
-             * @returns {string}
+             * @returns {string} <a href="#" title="修改" class="dg-opt-btn" onclick="page.dict.fucn.modify(1,'aa')"> 修改 </a>
              */
-            getOptBtn:function (param) {
+            getOptBtn: function (param) {
                 // {title:"修改",event:""}
-                if(!param || !param.isShow){
+                if (!param || !param.isShow) {
                     return "";
                 }
                 return "<a href='#' title='" + param.title + "' class='" + dgOptBtnClass + "' onclick='" + param.event + "'> " + param.title + " </a>";
             },
-            getFucnAllName : function (fucnName,params) {
+            /**
+             * 获取函数全名称，比如 page.dict.fucn.add(index)
+             * @param fucnName page.dict.fucn.add
+             * @param params [1,'str']
+             * @returns {*}
+             */
+            getFucnAllName: function (fucnName, params) {
                 var fucnAllName = fucnName;
-                if(!params) {
+                if (!params) {
                     return fucnAllName + "()";
                 }
                 fucnAllName += "(";
-                for(var i=0; i<params.length; i++){
+                for (var i = 0; i < params.length; i++) {
                     var param = params[i];
-                    if(isNaN(param)){
+                    if (isNaN(param)) {
                         param = "\"" + param + "\"";
                     }
-                    if(i==params.length -1) {
+                    if (i == params.length - 1) {
                         fucnAllName += param + ")";
                         continue;
                     }
@@ -161,10 +199,18 @@ var system = (function ($) {
                 }
                 return fucnAllName;
             },
-            getDgRow:function (obj,index) {
-                adminUI.datagrid(obj,'selectRow',index);
-                return adminUI.datagrid(obj,"getSelected");
+            /**
+             * 获取某表格中的某一行
+             * @param obj 表格对象
+             * @param index 行索引
+             * @returns {*}
+             */
+            getDgRow: function (obj, index) {
+                var rows = adminUI.datagrid(obj, 'getRows');//获得所有行
+                var row = rows[index];//根据index获得其中一行。
+                return row
             }
-        }
+
+        };
     }
 )(jQuery);

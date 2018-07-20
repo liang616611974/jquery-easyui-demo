@@ -99,6 +99,22 @@ var adminUI = (function($){
             return obj.window(param1,param2)
         },
 
+            openWindow : function (obj,title,href) {
+            var param = {
+                collapsible : false,
+                minimizable : false,
+                maximizable : false,
+                inline : true,
+                constrain : true,
+                //zIndex : 9000,
+                width : "100%",
+                height : "100%",
+                title : title,
+                href : href
+            }
+            obj.window(param);
+        },
+
         panel : function (obj,param) {
             return obj.panel(param)
         },

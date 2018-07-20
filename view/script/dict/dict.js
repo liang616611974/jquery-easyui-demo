@@ -1,27 +1,22 @@
 ;
 ;
-page.id = "dict"
-page.dict = {
-    init : {}, // 初始化对象
-    fucn : {}, // 函数对象
-    action : "init", // 页面动作
-    data : {}, // 对象数据
-};
+page.dict = system.initPage("dict");
 page.dict.init = {
     initPage: function () {
-        var that = page.dict.fucn;
-        this.initForm(that);
-        this.initDg(that);
+        var page = window.page.dict; // window 一定要加上，否则全局的page变量不是页面定义那一个
+        var fucn = window.page.dict.fucn;
+        this.initForm(page,fucn);
+        this.initDg(page,fucn);
     },
 
-    initForm: function (that, action, obj) {
-        system.initInput(that.get("queryFm"));
-        system.initBtn(that.root.find(".btn-nav-right"),that.name());
+    initForm: function (page,fucn) {
+        system.initInput(page.get("queryFm"));
+        system.initBtn(page.root.find(".btn-nav-right"),page.fucnName);
         //adminUI.button(that.root.find(".btn-nav-right").find("a[prop]"));
-        adminUI.datebox(that.get("date"), "setValue", "2017-07-07");
+        adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
     },
 
-    initDg: function (that, action, obj) {
+    initDg: function (page,fucn) {
         var data = [{id: 1, name: "张三", date: '2018-01-01', type: "男", amount: '1000'},
             {id: 2, name: "李四", date: '2018-02-01', type: "男", amount: '2000'},
             {id: 3, name: "王五", date: '2018-03-01', type: "男", amount: '3000'},
@@ -35,7 +30,7 @@ page.dict.init = {
             {id: 4, name: "小三", date: '2018-04-01', type: "女", amount: '4000'},
             {id: 5, name: "小四", date: '2018-05-01', type: "女", amount: '5000'}
         ];
-        adminUI.datagrid(that.dg, {
+        adminUI.datagrid(page.dg, {
             toolbar: '.dg-toolbar',
             //title : "字典列表",
             rownumbers: true,
@@ -52,9 +47,9 @@ page.dict.init = {
                 {field: 'type', title: '类型', width: 100},
                 {field: 'amount', title: '金额', width: 200},
                 {field: 'oper', title: '操作', width: 800, formatter: function (value, row, index) {
-                        return system.getOptBtn({title: "修改", isShow: true, event: that.getFucnAllName("modify", [1, "aa"])})
-                            + system.getOptBtn({title: "详情", isShow: true, event: that.getFucnAllName("detail",[index])})
-                            + system.getOptBtn({title: "删除", isShow: false, event: that.getFucnAllName("delete")});
+                        return system.getOptBtn({title: "修改", isShow: true, event: page.getFucnAllName("modify", [1, "aa"])})
+                            + system.getOptBtn({title: "详情", isShow: true, event: page.getFucnAllName("detail",[index])})
+                            + system.getOptBtn({title: "删除", isShow: false, event: page.getFucnAllName("delete")});
                     },}
             ]],
             onLoadSuccess: function (data) {
@@ -124,17 +119,6 @@ page.dict.init = {
 }
 
 page.dict.fucn = {
-    name: "page." + page.id + ".fucn",
-    root: jq("#" + page.id + "Div"),
-    dg: jq("#" + page.id + "Div").find("#dg"),
-    window : jq("#" + page.id + "Win"),
-    get: function (id) {
-        //console.log(this.name);
-        return this.root.find("#" + id);
-    },
-    getFucnAllName: function (fucnName, params) {
-        return system.getFucnAllName(this.name + "." + fucnName, params);
-    },
     query : function () {
         alert("查询");
     },
@@ -145,25 +129,15 @@ page.dict.fucn = {
         adminUI.alertInfo("新增成功" + p1 + p2);
     },
     modify : function (index) {
-        var row = system.getDgRow(this.dg,index);
+        var page = window.page.dict;
+        var row = system.getDgRow(page.dg,index);
         alert("修改");
     },
     detail : function (index) {
-        var row = system.getDgRow(this.dg,index)
+        var page = window.page.dict;
+        var row = system.getDgRow(page.dg,index)
         //console.log(row);
-        adminUI.window(this.window,{
-            collapsible : false,
-            minimizable : false,
-            maximizable : false,
-            inline : true,
-            constrain : true,
-            zIndex : 9000,
-            width : "100%",
-            height : "100%",
-            //modal : true,
-            title:"项目详情--" + row.name,
-            href:"page/dict/dict_detail.html"
-        });
+        adminUI.openWindow(page.window,"项目详情--" + row.name, "page/dict/dict_detail.html");
     },
     delete: function () {
         adminUI.alertInfo("删除成功");

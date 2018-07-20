@@ -1,9 +1,9 @@
 ;
-page.dictDetail = system.initPage("dictDetail");
-page.dictDetail.init = {
+page.dictView = system.initPage("dictView");
+page.dictView.init = {
     initPage: function () {
-        var page = window.page.dictDetail; // window 一定要加上，否则全局的page变量不是页面定义那一个
-        var fucn = window.page.dictDetail.fucn;
+        var page = window.page.dictView; // window 一定要加上，否则全局的page变量不是页面定义那一个
+        var fucn = window.page.dictView.fucn;
         this.initForm(page, fucn);
     },
 
@@ -15,19 +15,19 @@ page.dictDetail.init = {
 
 }
 
-page.dictDetail.fucn = {
+page.dictView.fucn = {
     query: function () {
-        alert("查询详情");
+        alert("查询视图");
     },
     reset: function () {
-        alert("重置详情");
+        alert("重置视图");
     },
     add: function (p1, p2) {
-        var page = window.page.dictDetail;
-        /*
+        var page = window.page.dict;
         var row = system.getDgRow(page.dg, index)
-        //console.log(row);*/
-        adminUI.openWindow(page.window,"项目视图","page/dict/dict_view.html");
+        //console.log(row);
+        adminUI.openWindow(page.window, "哇哈哈", "page/dict/dict_detail.html");
+
     },
     modify: function (index) {
         var page = window.page.dict;
@@ -69,6 +69,6 @@ page.dictDetail.fucn = {
 }*/
 
 jq(document).ready(function () {
-    page.dictDetail.init.initPage();
+    page.dictView.init.initPage();
 });
 

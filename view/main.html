@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/jquery-easyui-demo/resource/css/form.css"/>
     <style>
-        .north {
+        .page-top {
             height: 50px;
             background: url(../resource/img/main/main_north_bg.gif) #7f99be repeat-x center 50%;
             line-height: 50px;
@@ -22,13 +22,22 @@
             margin-top: 5px;
             overflow: hidden;
         }
+        .page-left {
+            width: 14%;
+        }
+        .page-center {
+            width: 84%;
+        }
+        .page-bottom{
+            height:20px; padding: 5px;text-align: center;line-height: 20px;overflow: hidden;
+        }
     </style>
 </head>
 
 <body data-options="scroll:'no'" class="easyui-layout">
 
 <!-- north 上方开始 -->
-<div data-options="region:'north',split:true,border:false" class="north">
+<div data-options="region:'north',split:true,border:false" class="page-top">
         <span style="padding-left:10px; font-size: 16px; ">
             <img src="../resource/img/main/main_sys_logo.png" style="width:25px;vertical-align: middle;"/>&nbsp;Jquery-EasyUI 管理后台
         </span>
@@ -36,7 +45,7 @@
 <!-- north 上方结束 -->
 
 <!-- west 左边开始 -->
-<div data-options="region:'west',title:'导航菜单',split:true,hide:true" style="width: 18%;">
+<div data-options="region:'west',title:'导航菜单',split:true,hide:true" class="page-left">
     <div id="navDiv" data-options="fit:true,border:false" class="easyui-accordion">
         <div id="navTree" style="padding: 10px;"></div>
     </div>
@@ -44,21 +53,20 @@
 <!-- west 左边结束 -->
 
 <!-- center 中间开始 -->
-<div data-options="region:'center'" style="width: 80%;">
+<div data-options="region:'center'" class="page-center">
     <!-- <div id="tabs" class="easyui-tabs" data-options="fit:true">
          <div title="后台操作的界面" data-options="iconCls:'icon-home',closable:false" style="padding:10px;">后台操作界面的说明</div>
          <div style="text-align: center">这是内容。。。。。。。。。。。</div>
      </div>-->
     <div id="contDiv" class="easyui-layout panel-noscroll" data-options="fit:true">
         <h1>北京欢迎你！！！！</h1>
-        <!--<input id="dd" type="text" required="required" class="easyui-datebox" data-options="currentText:'Today'"> </input>-->
     </div>
 </div>
 <!-- center 中间结束 -->
 
 <!-- south 底部开始 -->
-<div data-options="region:'south',collapsible:false" style="height:30px; padding: 5px;text-align: center">
-    <div style="text-align: center">版权所有，翻版必究</div>
+<div data-options="region:'south',collapsible:false" class="page-bottom">
+    版权所有，翻版必究
 </div>
 <!-- south 底部结束 -->
 
@@ -78,16 +86,3 @@
 <script type="text/javascript" src="../resource/js/common/system.js"></script>
 <script type="text/javascript" src="../resource/js/main.js"></script>
 <script type="text/javascript" src="../view/script/page_data.js"></script>
-
-<!--<script type="text/javascript" src="../resource/js/util/validator.js"></script>
-<script type="text/javascript" src="../resource/plugin/expand/easyui/validatebox_expand.js"></script>
-<script type="text/javascript" src="../resource/plugin/expand/easyui/input_expand.js"></script>
-<script type="text/javascript" src="../resource/plugin/expand/common/property_expand.js"></script>
--->
-<!--
-<script type="text/javascript" src="../resource/js/common/base.js"></script>
-<script type="text/javascript" src="../resource/js/common/admin_ui_easyui.js"></script>
-<script type="text/javascript" src="../resource/js/common/ajax.js"></script>
-<script type="text/javascript" src="../resource/js/common/system.js"></script>
-<script type="text/javascript" src="../resource/js/main.js"></script>
-<script type="text/javascript" src="../view/script/page_data.js"></script>-->
