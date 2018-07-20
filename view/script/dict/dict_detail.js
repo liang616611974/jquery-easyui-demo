@@ -4,13 +4,18 @@ page.dictDetail.init = {
     initPage: function () {
         var page = window.page.dictDetail; // window 一定要加上，否则全局的page变量不是页面定义那一个
         var fucn = window.page.dictDetail.fucn;
-        this.initForm(page, fucn);
+        var action = window.page.dict.action;
+        this.initForm(page, fucn,action);
     },
 
-    initForm: function (page, fucn) {
-        system.initInput(page.get("queryFm"));
+    initForm: function (page, fucn,action) {
+        //alert(action);
+        system.initInput(page.root);
         system.initBtn(page.root.find(".btn-nav-right"), page.fucnName);
         adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
+        if(action == "detail"){
+            system.disableInput(page.root);
+        }
     },
 
 }

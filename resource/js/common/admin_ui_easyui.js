@@ -118,8 +118,14 @@ var adminUI = (function($){
         panel : function (obj,param) {
             return obj.panel(param)
         },
-    	
-    	/** 确认框 */
+
+        /**
+         * 确认框
+         * @param title 标题
+         * @param content 内容
+         * @param fucn 回调函数，参数 r booolean
+         * @returns {*|boolean}
+         */
     	confirm:function(title,content,fucn){
     		return $.messager.confirm(title,content, function(r){
     			return fucn(r);

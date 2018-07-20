@@ -49,7 +49,7 @@ page.dict.init = {
                 {field: 'oper', title: '操作', width: 800, formatter: function (value, row, index) {
                         return system.getOptBtn({title: "修改", isShow: true, event: page.getFucnAllName("modify", [1, "aa"])})
                             + system.getOptBtn({title: "详情", isShow: true, event: page.getFucnAllName("detail",[index])})
-                            + system.getOptBtn({title: "删除", isShow: false, event: page.getFucnAllName("delete")});
+                            + system.getOptBtn({title: "删除", isShow: true, event: page.getFucnAllName("delete")});
                     },}
             ]],
             onLoadSuccess: function (data) {
@@ -126,21 +126,30 @@ page.dict.fucn = {
         alert("重置");
     },
     add: function (p1, p2) {
-        adminUI.alertInfo("新增成功" + p1 + p2);
+        var page = window.page.dict;
+        page.action = "add";
+        adminUI.openWindow(page.window,"新增字典", "page/dict/dict_detail.html");
     },
     modify : function (index) {
         var page = window.page.dict;
         var row = system.getDgRow(page.dg,index);
-        alert("修改");
+        page.action = "modify";
+        adminUI.openWindow(page.window,"修改字典", "page/dict/dict_detail.html");
     },
     detail : function (index) {
         var page = window.page.dict;
-        var row = system.getDgRow(page.dg,index)
-        //console.log(row);
-        adminUI.openWindow(page.window,"项目详情--" + row.name, "page/dict/dict_detail.html");
+        var row = system.getDgRow(page.dg,index);
+        page.action = "detail";
+        adminUI.openWindow(page.window,"字典详情--" + row.name, "page/dict/dict_detail.html");
     },
     delete: function () {
-        adminUI.alertInfo("删除成功");
+        adminUI.confirm("删除字典","确认删除字典?",function (r) {
+            if(r){
+                alert("删除成功");
+            }else {
+                alert("考虑考虑")
+            }
+        })
     }
 };
 

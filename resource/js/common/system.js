@@ -162,6 +162,14 @@ var system = (function ($) {
             },
 
             /**
+             * 失效所有输入框
+             * @param scope
+             */
+            disableInput : function (scope) {
+                scope.find(inputSelector).textbox('readonly',true);
+            },
+
+            /**
              * 获取表格操作按钮
              * @param title 显示内容
              * @param event 触发事件

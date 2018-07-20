@@ -1,0 +1,5 @@
+ .textbox-readonly .textbox-text{
+    user-select: none;
+    cursor: url("../img/page/sad.png"),default;
+    /*cursor: url("../img/page/forbidden.png"),default;*/
+}
