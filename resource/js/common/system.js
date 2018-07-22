@@ -6,7 +6,7 @@ var system = (function ($) {
         var labelPosition = "top"; // 输入框标签位置
         var labelWidth = 200; // 输入框标签长度
         var inputWidth = 260; // 输入框长度
-        var btnWidth = 120; // 按钮长度
+        var btnWidth = 100; // 按钮长度
         var btnClass = "btn1 btn2"; // 按钮样式
         var dgOptBtnClass = 'dg-opt-btn'; // 表格操作按钮样式
         var dicts; // 字典数据集合
@@ -177,7 +177,7 @@ var system = (function ($) {
              */
             getOptBtn: function (param) {
                 // {title:"修改",event:""}
-                if (!param || !param.isShow) {
+                if (!param || param.isShow == false) {
                     return "";
                 }
                 return "<a href='#' title='" + param.title + "' class='" + dgOptBtnClass + "' onclick='" + param.event + "'> " + param.title + " </a>";

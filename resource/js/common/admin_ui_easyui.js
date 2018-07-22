@@ -81,11 +81,33 @@ var adminUI = (function($){
     	/** 数据表格datagrid */
     	datagrid:function (obj,param1,param2){
             if(arguments.length<=2){
-                param1.onLoadError = function () {
-                    adminUI.alertErr("加载列表数据错误");
-                };
+                if($.type(param1) == "object"){
+                    var url = param1.url; // 暂存url;
+                    param1.url = null; // 不让datagrio自动加载
+                    param1.onBeforeLoad = function () {
+                        // 获取分页参数
+                        var pager = obj.datagrid("getPager").data("pagination").options;
+                        //console.log(pager);
+                        var pagerParam = {
+                            "page": pager.pageNumber == 0? 1 : pager.pageNumber,
+                            "rows": pager.pageSize
+                        };
+                        // 合并其它请求参数
+                        var options = obj.datagrid("options");
+                        //console.log(options);
+                        var requestParam = $.extend(options.queryParams, pagerParam);
+                        //console.log(options.requestParam);
+                        // 发起请求获取数据
+                        ajax.postJson(url,requestParam,function (data) {
+                            //console.log(data);
+                            obj.datagrid("loadData", data.data);
+                        });
+                    };
+                    param1.onLoadError = function () {
+                        adminUI.alertErr("加载列表数据错误");
+                    };
+                }
                 return obj.datagrid(param1);
-
             }
             return obj.datagrid(param1,param2);
     	},

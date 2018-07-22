@@ -121,7 +121,7 @@ var ajax = (function ($) {
 
                 success: function (data) {
                     if(data.code && data.code!= '200'){
-                        adminUI.alertErr(data);
+                        adminUI.alertErr(data.msg);
                         return false;
                     }
                 },
@@ -134,12 +134,18 @@ var ajax = (function ($) {
         },
 
         ajax: function (param) {
+            //console.log(param);
             $.ajax(param);
         },
 
-        post: function (param) {
-            param.method = 'post';
-            this.ajax(param);
+        post: function (url,param,success) {
+            var request = {};
+            request.method = 'post';
+            request.url = url;
+            request.data = param
+            request.dataType = "json";
+            request.success = succeess;;
+            this.ajax(request);
         },
 
         /**
@@ -149,12 +155,20 @@ var ajax = (function ($) {
          * @param succeess
          */
         postJson: function (url,param,succeess) {
-            param.url = url;
-            param.data = param;
-            param.contentType = "application/json; charset=utf-8";
-            param.dataType = "json";
-            param.success = succeess;
-            this.post(param);
+            var request = {};
+            request.method = 'post';
+            request.url = url;
+            request.data = JSON.stringify(param);
+            request.contentType = "application/json; charset=utf-8";
+            request.dataType = "json";
+            request.success = function (data) {
+                if(data.code && data.code!= '200'){
+                    adminUI.alertErr(data.msg);
+                    return false;
+                }
+                succeess(data);
+            },
+            this.ajax(request);
         }
     }
 })(jQuery);
