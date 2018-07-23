@@ -1,0 +1,25 @@
+<div id="goodsDetailDiv" class="page">
+    <div class="dg-toolbar">
+        <div class="page-fm">
+            <form id="fm">
+                <div class="fm-input">
+                    <input name="id" type="hidden">
+                    <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"/><label class="rq">*</label></span>
+                    <span><input name="goodsType" prop="label:'商品类型：';prompt:'请选择商品类型';type:'select';dict:'GOODS_TYPE'"/><label class="rq">*</label></span>
+                    <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'"/><label class="rq">*</label></span>
+                    <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"/></span>
+                    <span><input name="produceDate" prop="label:'生产日期：';prompt:'请选择生产日期';type:'date'"/></span>
+                </div>
+               <!-- <div><input name="amount" prop="label:'机密文件：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file'"/></div>-->
+            </form>
+        </div>
+        <div class="page-btn">
+            <a id="queryBtn" prop="event:'save'">保存</a>
+            <a id="resetBtn" prop="event:'cancel'">取消</a>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="./script/goods/goods_detail.js"></script>

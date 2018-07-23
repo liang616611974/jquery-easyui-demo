@@ -123,7 +123,7 @@ page.dict.fucn = {
         alert("查询");
     },
     reset : function () {
-        alert("重置");
+        alert("重置2222");
     },
     add: function (p1, p2) {
         var page = window.page.dict;

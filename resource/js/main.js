@@ -1,6 +1,6 @@
 jq(document).ready(function () {
     var $ = window.jq;
-    $("#dd").datebox();
+    // 初始化左侧菜单栏
     $("#navTree").tree({
         data: navTree,
         onClick: function(node){
@@ -16,6 +16,8 @@ jq(document).ready(function () {
             });
         }
     });
+    // 初始化字典数据
+    system.setDicts();
 
 });
 

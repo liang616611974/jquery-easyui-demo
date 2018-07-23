@@ -10,9 +10,9 @@ page.dict.init = {
     },
 
     initForm: function (page, fucn) {
-        system.initInput(page.get("queryFm"));
-        system.initBtn(page.root.find(".btn-nav-right"), page.fucnName);
-        adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
+        system.initInput(page.fm);
+        system.initBtn(page.root.find(".page-btn"), page.fucnName);
+        //adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
     },
 
     initDg: function (page, fucn) {
@@ -59,13 +59,13 @@ page.dict.init = {
 page.dict.fucn = {
     query: function () {
         var page = window.page.dict;
-        var param = page.get("queryFm").serializeObject();
+        var param = page.fm.serializeObject();
         console.log(param);
         adminUI.datagrid('reload', param);
     }
     ,
     reset: function () {
-        alert("重置");
+        alert("重置111");
     },
     add: function (p1, p2) {
         var page = window.page.dict;

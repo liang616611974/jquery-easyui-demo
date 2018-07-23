@@ -1,8 +1,8 @@
 <div id="dictDiv" class="page">
     <div class="dg-toolbar">
-        <div class="dg-form">
-            <form id="queryFm">
-                <div class="fm-input">
+        <div class="page-form">
+            <form id="fm">
+                <div class="fm-input fm-input-left">
                     <input name="id" type="hidden"/>
                     <span><input name="name" prop="label:'姓名：';prompt:'请填写姓名';type:'text'"/><label class="rq">*</label></span>
                     <span><input id="date" prop="label:'日期：';prompt:'请选择日期';type:'date'"/><label class="rq">*</label></span>
@@ -17,7 +17,7 @@
             </form>
         </div>
 
-        <div class="dg-btn btn-nav-right">
+        <div class="page-btn page-btn-right">
             <a id="qryBtn" prop="event:'query'">查询</a>
             <a id="resetBtn" prop="event:'reset'">重置</a>
             <a id="addBtn" prop="event:'add'">新增</a>

@@ -1,5 +1,4 @@
 ;
-;
 page.goods = system.initPage("goods");
 page.goods.init = {
     initPage: function () {
@@ -10,15 +9,15 @@ page.goods.init = {
     },
 
     initForm: function (page,fucn) {
-        system.initInput(page.get("queryFm"));
-        system.initBtn(page.root.find(".btn-nav-right"),page.fucnName);
+        system.initInput(page.fm);
+        system.initBtn(page.root.find(".page-btn"),page.fucnName);
         adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
     },
 
     initDg: function (page,fucn) {
         adminUI.datagrid(page.dg, {
             toolbar: '.dg-toolbar',
-            //title : "字典列表",
+            //title : "商品列表",
             rownumbers: true,
             //fit:true,
             url : '/goods/queryPage',
@@ -56,32 +55,33 @@ page.goods.init = {
 page.goods.fucn = {
     query : function () {
         var page = window.page.goods;
-        var param = page.get("queryFm").serializeObject();
+        var param = page.fm.serializeObject();
         //console.log(param);
         adminUI.datagrid(page.dg,'reload', param);
     },
     reset : function () {
-        alert("重置");
+        var page = window.page.goods;
+        adminUI.clearForm(page.fm);
     },
-    add: function (p1, p2) {
+    add: function () {
         var page = window.page.goods;
         page.action = "add";
-        adminUI.openWindow(page.window,"新增字典", "page/goods/dict_detail.html");
+        adminUI.openWindow(page.window,"新增商品", "page/goods/goods_detail.html",340,500);
     },
     modify : function (index) {
         var page = window.page.goods;
         var row = system.getDgRow(page.dg,index);
         page.action = "modify";
-        adminUI.openWindow(page.window,"修改字典", "page/goods/dict_detail.html");
+        adminUI.openWindow(page.window,"修改商品", "page/goods/goods_detail.html");
     },
     detail : function (index) {
         var page = window.page.goods;
         var row = system.getDgRow(page.dg,index);
         page.action = "detail";
-        adminUI.openWindow(page.window,"字典详情--" + row.name, "page/goods/dict_detail.html");
+        adminUI.openWindow(page.window,"商品详情--" + row.name, "page/goods/goods_detail.html");
     },
     delete: function () {
-        adminUI.confirm("删除字典","确认删除字典?",function (r) {
+        adminUI.confirm("删除商品","确认删除商品?",function (r) {
             if(r){
                 alert("删除成功");
             }else {

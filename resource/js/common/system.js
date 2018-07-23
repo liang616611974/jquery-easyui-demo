@@ -64,8 +64,7 @@ var system = (function ($) {
                     prop.editable = false;
                     adminUI.datetimebox(obj, prop);
                 } else if (type == "select") {
-                    prop.editable = false;
-                    adminUI.selectbox(obj, prop);
+                    defineSelect(obj, prop);
                 } else if (type == "number") {
                     prop.min = 0;
                     prop.max = 999999999;
@@ -109,6 +108,24 @@ var system = (function ($) {
             }
         }
 
+        /**
+         * 定义选择框
+         * @param obj
+         * @param prop
+         */
+        function defineSelect(obj,prop) {
+            prop.editable = false;
+            prop.data = (dicts[prop.dict] == null ? [] :dicts[prop.dict]);
+            if(prop.prompt){
+                prop.data.unshift({
+                    dictCode : "",dictDesc : prop.prompt
+                });
+            }
+            prop.valueField = "dictCode"
+            prop.textField = "dictDesc"
+            adminUI.selectbox(obj, prop);
+        }
+
         return {
             /**
              * 初始化页面变量
@@ -125,6 +142,7 @@ var system = (function ($) {
                     id:id,
                     fucnName: "page." + id + ".fucn", //
                     root: $("#" + id + "Div"),
+                    fm: $("#" + id + "Div").find("#fm"),
                     dg: $("#" + id + "Div").find("#dg"),
                     window : $("#" + id + "Win"),
                     get: function (id) {
@@ -159,6 +177,15 @@ var system = (function ($) {
             initBtn: function (scope, fucnName) {
                 var objs = scope.find(btnSelector);
                 defineBtns(objs, fucnName);
+            },
+
+            /**
+             * 初始化选择框
+             * @param obj 选择框对象
+             * @param prop 属性
+             */
+            initSelect : function (obj,prop) {
+                defineSelect(obj, prop);
             },
 
             /**
@@ -217,7 +244,16 @@ var system = (function ($) {
                 var rows = adminUI.datagrid(obj, 'getRows');//获得所有行
                 var row = rows[index];//根据index获得其中一行。
                 return row
+            },
+            setDicts : function () {
+                dicts = {"GOODS_TYPE":[
+                        {"dictCode":"CLOTHING","dictDesc":"服装"},
+                        {"dictCode":"FOOD","dictDesc":"食品"},
+                        {"dictCode":"HOUSEHOLD","dictDesc":"家居用品"},
+                        {"dictCode":"VEHICLE","dictDesc":"交通工具"}
+                    ]}
             }
+
 
         };
     }
