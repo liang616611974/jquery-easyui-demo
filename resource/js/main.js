@@ -10,6 +10,10 @@ jq(document).ready(function () {
                     $("#contDiv").panel({title:node.text});
                 });*/
 
+            window.page.action = "init";// 页面的动作
+            window.page.param = {};// 页面传递的参数
+
+            // 加载页面
             $("#contDiv").load(node.attributes.url,function (data) {
                 //$("#contDiv").panel({title:node.text});
                 adminUI.panel($("#contDiv"), {title: node.text});

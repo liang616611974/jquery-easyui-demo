@@ -82,6 +82,15 @@ var adminUI = (function ($) {
         datagrid: function (obj, param1, param2) {
             if (arguments.length <= 2) {
                 if ($.type(param1) == "object") {
+                    // 设置基本属性
+                    if(!param1.toolbar){
+                        param1.toolbar = '.dg-toolbar';
+                    }
+                    if(!param1.pagination){
+                        param1.pagination = true;
+                    }
+                    param1.rownumbers = true;
+
                     // 如果是请求远程服务数据
                     if(param1.url && param1.url!=""){
                         var url = param1.url; // 暂存url;

@@ -140,23 +140,36 @@ var system = (function ($) {
                     root.append("<div id='" + id +"Win' class='page-win'></div>");
                 }
                 var page = {
-                    id:id,
-                    fucnName: "page." + id + ".fucn", //
-                    root: $("#" + id + "Div"),
-                    fm: $("#" + id + "Div").find("#fm"),
-                    dg: $("#" + id + "Div").find("#dg"),
-                    window : $("#" + id + "Win"),
+                    id:id, // 页面唯一标识
+                    fucnName: "page." + id + ".fucn", // 页面的函数名称
+                    root: $("#" + id + "Div"), // 页面的根节点对象
+                    fm: $("#" + id + "Div").find("#fm"), // 页面的表单对象
+                    dg: $("#" + id + "Div").find("#dg"), // 页面的表格对象
+                    window : $("#" + id + "Win"), // 页面的子窗口对象
+                    init : {}, // 页面的初始化对象
+                    fucn : {}, // 页面的函数对象
+                    action : window.page.action, // 页面动作
+                    param : $.extend({},window.page.param), // 页面获取到的参数
+                    data : {}, // 页面的数据
+                    /**
+                     * 在当前页面根据id获取对象
+                     * @param id
+                     * @returns {number | * | {}}
+                     */
                     get: function (id) {
                         //console.log(this.name);
                         return this.root.find("#" + id);
                     },
+                    /**
+                     * 获取函数的全称，其中包括参数，比如：page.dict.fucn.add(param1,param2)
+                     *
+                     * @param fucnName 函数名称 add
+                     * @param params 参数数组 [param1,param2]
+                     * @returns {*} page.dict.fucn.add(param1,param2)
+                     */
                     getFucnAllName: function (fucnName, params) {
                         return system.getFucnAllName(this.fucnName + "." + fucnName, params);
                     },
-                    init : {}, // 初始化对象
-                    fucn : {}, // 函数对象
-                    action : "init", // 页面动作
-                    data : {}, // 对象数据
                 };
                 return page;
             },
@@ -190,11 +203,19 @@ var system = (function ($) {
             },
 
             /**
-             * 失效所有输入框
+             * 失效输入框
              * @param scope
              */
             disableInput : function (scope) {
                 scope.find(inputSelector).textbox('readonly',true);
+            },
+
+            /**
+             * 隐藏按钮
+             * @param scope
+             */
+            hideBtn : function (scope) {
+                scope.find(btnSelector).hide();
             },
 
             /**
@@ -246,6 +267,9 @@ var system = (function ($) {
                 var row = rows[index];//根据index获得其中一行。
                 return row
             },
+            /**
+             * 设置字典集合
+             */
             setDicts : function () {
                 dicts = {"GOODS_TYPE":[
                         {"dictCode":"CLOTHING","dictDesc":"服装"},
@@ -253,8 +277,23 @@ var system = (function ($) {
                         {"dictCode":"HOUSEHOLD","dictDesc":"家居用品"},
                         {"dictCode":"VEHICLE","dictDesc":"交通工具"}
                     ]}
+            },
+            /**
+             * 获取字典描述
+             * @param groupCode
+             * @param dictCode
+             */
+            getDictDesc : function (groupCode,dictCode) {
+                var dict = dicts[groupCode];
+                if(!dict){
+                    return "";
+                }
+                for(var i=0; i<dict.length; i++){
+                    if(dict[i].dictCode == dictCode){
+                        return dict[i].dictDesc;
+                    }
+                }
             }
-
 
         };
     }

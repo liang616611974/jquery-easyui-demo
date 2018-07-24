@@ -128,7 +128,7 @@ var ajax = (function ($) {
                 complete: function (xhr, status) {
                     setTimeout(function () {
                         adminUI.closeProgress();
-                    }, 1000);
+                    }, 500);
                 }
             });
         },
