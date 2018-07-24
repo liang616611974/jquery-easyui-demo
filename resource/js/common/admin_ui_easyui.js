@@ -123,7 +123,8 @@ var adminUI = (function ($) {
             return obj.window(param1, param2)
         },
 
-        openWindow: function (obj, title, href,width,height) {
+        openWindow: function (page, title, href,width,height) {
+            var obj = page.window;
             var param = {
                 collapsible: false,
                 minimizable: false,
@@ -136,38 +137,55 @@ var adminUI = (function ($) {
                 title: title,
                 href: href
             };
+            // 控制打开宽高
             if(width){
+                // 如果是指定宽度
                 param.width = width
                 param.onOpen = function () {
                     setTimeout(function () {
                         obj.find(".page-fm").addClass("page-fm-center");
-                        console.log(obj.find(".page-fm").length);
+                        //console.log(obj.find(".page-fm").length);
                         obj.find(".fm-input").addClass("fm-input-center");
-                        console.log(obj.find(".fm-input").length);
+                        //console.log(obj.find(".fm-input").length);
                         obj.find(".page-btn").addClass("page-btn-bottom");
-                        console.log(obj.find(".page-btn").length);
+                        //console.log(obj.find(".page-btn").length);
+                        obj.window('center');
                     },100);
-                    obj.window('center');
+
                 }
             }else {
-                param.width = "100%";
+                // 如果是最大化
                 param.onOpen = function () {
                     setTimeout(function () {
                         obj.find(".page-fm").addClass("page-fm-top");
                         obj.find(".fm-input").addClass("fm-input-left");
                         obj.find(".page-btn").addClass("page-btn-top");
+                        obj.window('maximize');
                     },100);
-                    obj.window('maximize');
+
                 }
             }
             if(height){
                 param.height = height
-            }else {
-                param.height = "100%";
+            }
+            // 注册关闭事件
+            param.onClose = function () {
+                if(page.dg.length > 0){
+                    page.dg.datagrid("reload");
+                }
             }
             obj.window(param);
         },
 
+        closeWindow : function(page) {
+            page.root.parent().window("close");
+        },
+
+        /**
+         * 面板操作
+         * @param obj
+         * @param param
+         */
         panel: function (obj, param) {
             return obj.panel(param)
         },

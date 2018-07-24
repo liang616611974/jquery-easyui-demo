@@ -4,6 +4,7 @@ page.goodsDetail.init = {
     initPage: function () {
         var page = window.page.goodsDetail; // window 一定要加上，否则全局的page变量不是页面定义那一个
         var fucn = window.page.goodsDetail.fucn;
+        var action = window.page.goods.action;
         this.initForm(page, fucn);
         //this.initDg(page,fucn);
     },
@@ -21,7 +22,7 @@ page.goodsDetail.init = {
             //fit:true,
             url: '/goods/queryPage',
             //data: data,
-            queryParams: {sysCode: "SCD", "sortColumns": "id,cre_time desc"},
+            queryParams: {sysCode: "SCD", "sortColumns": "id desc,cre_time desc"},
             pagination: true,
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
@@ -55,10 +56,27 @@ page.goodsDetail.init = {
 
 page.goodsDetail.fucn = {
     save: function () {
-        alert("保存");
+        var page = window.page.goodsDetail;
+        if(!adminUI.validateForm(page.fm)){
+            alert("验证失败");
+            return false;
+        }
+        var param,url;
+        var action = window.page.goods.action;
+        if(action=="add"){
+            url = "/goods/add";
+        }else {
+            url = "/goods/modify";
+        }
+        param = page.fm.serializeObject();
+        ajax.postJson(url, param, function () {
+            adminUI.alertInfo("保存成功");
+            adminUI.closeWindow(page);
+        });
     },
     cancel: function () {
-        alert("取消");
+        var page = window.page.goodsDetail;
+        adminUI.closeWindow(page);
     }
 };
 

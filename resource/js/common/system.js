@@ -115,7 +115,8 @@ var system = (function ($) {
          */
         function defineSelect(obj,prop) {
             prop.editable = false;
-            prop.data = (dicts[prop.dict] == null ? [] :dicts[prop.dict]);
+            prop.data = (dicts[prop.dict] == null ? [] :$.extend(true,[],dicts[prop.dict]));
+            //console.log(prop.data);
             if(prop.prompt){
                 prop.data.unshift({
                     dictCode : "",dictDesc : prop.prompt
@@ -136,7 +137,7 @@ var system = (function ($) {
                 // 添加子窗口Div
                 if($("#" + id + "Win").length<=0){
                     //alert("不存在");
-                    root.append("<div id='" + id +"Win'></div>");
+                    root.append("<div id='" + id +"Win' class='page-win'></div>");
                 }
                 var page = {
                     id:id,

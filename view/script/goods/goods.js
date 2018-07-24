@@ -22,7 +22,7 @@ page.goods.init = {
             //fit:true,
             url : '/goods/queryPage',
             //data: data,
-            queryParams: {sysCode:"SCD","sortColumns": "id,cre_time desc"},
+            queryParams: {sysCode:"SCD","sortColumns": "id desc,cre_time desc"},
             pagination: true,
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
@@ -66,13 +66,14 @@ page.goods.fucn = {
     add: function () {
         var page = window.page.goods;
         page.action = "add";
-        adminUI.openWindow(page.window,"新增商品", "page/goods/goods_detail.html",340,500);
+        adminUI.openWindow(page,"新增商品", "page/goods/goods_detail.html");
     },
     modify : function (index) {
         var page = window.page.goods;
         var row = system.getDgRow(page.dg,index);
+        page.data = row;
         page.action = "modify";
-        adminUI.openWindow(page.window,"修改商品", "page/goods/goods_detail.html");
+        adminUI.openWindow(page,"修改商品", "page/goods/goods_detail.html");
     },
     detail : function (index) {
         var page = window.page.goods;
