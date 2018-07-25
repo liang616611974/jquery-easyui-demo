@@ -58,17 +58,21 @@ page.goods.init = {
 page.goods.fucn = {
     query : function () {
         var page = window.page.goods;
+        if(!adminUI.validateForm(page.fm)){
+            return false;
+        }
         var param = page.fm.serializeObject();
         //console.log(param);
-        adminUI.datagrid(page.dg,'reload', param);
+        //adminUI.datagrid(page.dg,'reload', param);
+        adminUI.reloadDg(page.dg, param);
     },
     reset : function () {
         var page = window.page.goods;
         adminUI.clearForm(page.fm);
     },
     add: function () {
-        window.page.action = "add";
         var page = window.page.goods;
+        window.page.action = "add";
         adminUI.openWindow(page,"商品新增", "page/goods/goods_detail.html");
     },
     modify : function (index) {
@@ -85,13 +89,29 @@ page.goods.fucn = {
         window.page.param = row;
         adminUI.openWindow(page,"商品详情","page/goods/goods_detail.html");
     },
-    delete: function () {
+    delete: function (index) {
+        var page = window.page.goods;
+        var row = system.getDgRow(page.dg,index);
+        if(!row){
+            adminUI.alertInfo("请选择要删除的数据！");
+            return false;
+        }
+        // 构造请求参数
+        var param = {
+            ids:[row.id]
+        };
+       /* jq.each(row,function (i,n) {
+            param.ids.push(n.id);
+        });*/
+        //console.log(param.ids);
         adminUI.confirm("删除商品","确认删除商品?",function (r) {
-            if(r){
-                alert("删除成功");
-            }else {
-                alert("考虑考虑")
+            if(!r){
+                return false;
             }
+            ajax.postJson("/goods/remove",param,function () {
+                adminUI.alertInfo("删除成功");
+                adminUI.reloadDg(page.dg);
+            })
         })
     }
 };

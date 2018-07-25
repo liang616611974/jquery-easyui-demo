@@ -6,7 +6,7 @@
     $.fn.serializeObject = function() {
         var fields = this.serializeArray();
         var o = {};
-        jQuery.each(fields, function(i, fields) {
+        $.each(fields, function(i, fields) {
             if (o[this.name]) {
                 /*
                  * 表单中可能有多个相同标签，比如有多个label， 那么你在json对象o中插入第一个label后，还要继续插入，

@@ -3,10 +3,12 @@
         <div class="page-form">
             <form id="fm">
                 <div class="fm-input fm-input-left">
-                    <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"/></span>
+                    <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"
+                                 data-options="validType:['minLength[2]','maxLength[10]']" /></span>
                     <span><input name="goodsType" prop="label:'商品类型：';prompt:'请选择商品类型';type:'select';dict:'GOODS_TYPE'"/></span>
                     <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'"/></span>
-                    <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"/></span>
+                    <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
+                                 data-options="validType:['minLength[2]','maxLength[10]']"/></span>
                     <span><input name="produceDateBegin" prop="label:'生产日期开始：';prompt:'请选择生产日期开始';type:'date'"/></span>
                     <span><input name="produceDateEnd" prop="label:'生产日期结束：';prompt:'请选择生产日期结束';type:'date'"/></span>
                 </div>

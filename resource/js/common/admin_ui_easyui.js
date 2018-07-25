@@ -90,6 +90,7 @@ var adminUI = (function ($) {
                         param1.pagination = true;
                     }
                     param1.rownumbers = true;
+                    param1.singleSelect = true;
 
                     // 如果是请求远程服务数据
                     if(param1.url && param1.url!=""){
@@ -124,6 +125,10 @@ var adminUI = (function ($) {
             return obj.datagrid(param1, param2);
         },
 
+        reloadDg : function (obj,param) {
+            obj.datagrid("reload",param);
+        },
+
         /** 窗口 */
         window: function (obj, param1, param2) {
             if (arguments.length <= 2) {
@@ -150,7 +155,7 @@ var adminUI = (function ($) {
             if(width){
                 // 如果是指定宽度
                 param.width = width
-                param.onOpen = function () {
+                param.onLoad = function () {
                     setTimeout(function () {
                         obj.find(".page-fm").addClass("page-fm-center");
                         //console.log(obj.find(".page-fm").length);
@@ -164,7 +169,7 @@ var adminUI = (function ($) {
                 }
             }else {
                 // 如果是最大化
-                param.onOpen = function () {
+                param.onLoad = function () {
                     setTimeout(function () {
                         obj.find(".page-fm").addClass("page-fm-top");
                         obj.find(".fm-input").addClass("fm-input-left");

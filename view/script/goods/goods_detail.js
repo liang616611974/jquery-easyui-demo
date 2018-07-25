@@ -11,7 +11,6 @@ page.goodsDetail.init = {
         ajax.postJson("/goods/get",page.param,function (data) {
             page.data = data.data;
             page.init.initForm(page);
-
             //this.initDg(page,fucn);
         });
     },
@@ -26,7 +25,7 @@ page.goodsDetail.init = {
         }
     },
 
-    initDg: function (page, fucn) {
+    /*initDg: function (page, fucn) {
         adminUI.datagrid(page.dg, {
             toolbar: '.dg-toolbar',
             //title : "字典列表",
@@ -63,26 +62,28 @@ page.goodsDetail.init = {
 
         });
 
-    }
+    }*/
 }
 
 page.goodsDetail.fucn = {
     save: function () {
         var page = window.page.goodsDetail;
         if(!adminUI.validateForm(page.fm)){
-            alert("验证失败");
+            //alert("验证失败");
             return false;
         }
-        var param,url;
+        var param,url,msg;
         var action = page.action;
         if(action=="add"){
             url = "/goods/add";
+            msg = "新增成功";
         }else {
             url = "/goods/modify";
+            msg = "修改成功";
         }
         param = page.fm.serializeObject();
         ajax.postJson(url, param, function () {
-            adminUI.alertInfo("保存成功");
+            adminUI.alertInfo(msg);
             adminUI.closeWindow(page);
         });
     },
