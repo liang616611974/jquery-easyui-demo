@@ -1,6 +1,7 @@
 ;
 var system = (function ($) {
-        var root = $("#contDiv");
+        var root = $("#contDiv"); // 下载使用的表单
+        var exportFm = $("exportFm"); // 下载使用的表单
         var inputSelector = "input[prop]";
         var btnSelector = "a[prop]";
         var labelPosition = "top"; // 输入框标签位置
@@ -293,6 +294,38 @@ var system = (function ($) {
                         return dict[i].dictDesc;
                     }
                 }
+            },
+            /**
+             * 获取带参数的
+             * @param url
+             * @param param
+             * @returns {*}
+             */
+            getUrlWithParam : function (url,param) {
+                if(!param){
+                    return url;
+                }
+                var newUrl = url;
+                var isFirstParm = true;
+                for (f in param) {
+                    var val = param[f];
+                    if(val==null){
+                        continue;
+                    }
+                    if (isFirstParm) {
+                        newUrl += "?" + f + "=" + val;
+                        isFirstParm = false;
+                    }else {
+                        newUrl += "&" + f + "=" + val;
+                    }
+                }
+                return newUrl;
+            },
+            download : function (url,param) {
+                url = encodeURI(system.getUrlWithParam(url, param));
+                console.log(url);
+                $("#exportFm").attr("action", url);
+                jq("#exportFm").submit();
             }
 
         };

@@ -9,5 +9,39 @@
 <body>
 <h1>Jquery-EasyUI 管理后台</h1>
 <h2><a href="view/main.html">登录</a></h2>
+<div >
+    <form id="exportFm">
+    </form>
+    <button onclick="export1();">导出</button>
+</div>
 </body>
 </html>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/jquery.min.js"></script>
+<!--<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../resource/plugin/jquery-easyui-1.5.4/locale/easyui-lang-zh_CN.js"></script>-->
+<script type="text/javascript" src="../resource/plugin/form/jquery.form.js"></script>
+<script>
+
+     function export1(){
+        var options = {
+            //type : "POST",
+            //target:     '#divToUpdate',
+            url: "/goods/export",
+            data : {dowloadName:"商品列表"}, // 除了表单，额外传送的数据
+            //dataType : "json", // 返回数据的格式
+            //resetForm : true, //  调用成功后，是否重置表单
+            success:    function(data) {
+                alert(data);
+                //alert('Thanks for your comment!');
+            }
+        };
+        // pass options to ajaxForm
+        //console.log($('#exportFm').length);
+        //debugger;
+        $('#exportFm').ajaxSubmit(options);
+    }
+
+    /*jq(document).ready(function () {
+
+    });*/
+</script>

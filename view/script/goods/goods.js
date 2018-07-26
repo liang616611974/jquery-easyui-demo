@@ -70,6 +70,32 @@ page.goods.fucn = {
         var page = window.page.goods;
         adminUI.clearForm(page.fm);
     },
+    export : function () {
+        //alert("导出");
+        var url = "/goods/export";
+        var param = {};
+        param.dowloadName = '商品列表';
+        url = encodeURI(system.getUrlWithParam(url, param));
+        console.log(url);
+        jq("#exportFm").attr("action", url);
+        jq("#exportFm").submit();
+       /* var options = {
+            type : "POST",
+            //target:     '#divToUpdate',
+            url: "/goods/export",
+            data : {dowloadName:"商品列表"}, // 除了表单，额外传送的数据
+            dataType : "json", // 返回数据的格式
+            //resetForm : true, //  调用成功后，是否重置表单
+            success:    function(data) {
+                alert(data.msg);
+                //alert('Thanks for your comment!');
+            }
+        };
+        // pass options to ajaxForm
+        console.log(jq('#exportFm').length);
+        debugger;
+        jq('#exportFm').ajaxForm(options);*/
+    },
     add: function () {
         var page = window.page.goods;
         window.page.action = "add";
@@ -114,6 +140,7 @@ page.goods.fucn = {
             })
         })
     }
+
 };
 
 jq(document).ready(function () {
