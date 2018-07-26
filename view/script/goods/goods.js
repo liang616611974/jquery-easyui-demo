@@ -22,7 +22,7 @@ page.goods.init = {
             //pagination: true,
             //data: data,
             url : '/goods/queryPage',
-            queryParams: {sysCode:"SCD","sortColumns": "id desc,cre_time desc"},
+            queryParams: {sortColumns: "id desc,cre_time desc"},
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
                 {field: 'id', title: '主键', width: 10, hidden: 'true'},
@@ -71,30 +71,17 @@ page.goods.fucn = {
         adminUI.clearForm(page.fm);
     },
     export : function () {
-        //alert("导出");
+        var page = window.page.goods;
+        if(!adminUI.validateForm(page.fm)){
+            return false;
+        }
         var url = "/goods/export";
-        var param = {};
-        param.dowloadName = '商品列表';
-        url = encodeURI(system.getUrlWithParam(url, param));
-        console.log(url);
-        jq("#exportFm").attr("action", url);
-        jq("#exportFm").submit();
-       /* var options = {
-            type : "POST",
-            //target:     '#divToUpdate',
-            url: "/goods/export",
-            data : {dowloadName:"商品列表"}, // 除了表单，额外传送的数据
-            dataType : "json", // 返回数据的格式
-            //resetForm : true, //  调用成功后，是否重置表单
-            success:    function(data) {
-                alert(data.msg);
-                //alert('Thanks for your comment!');
-            }
+        var param = {
+            sortColumns: "id desc,cre_time desc",
+            downloadName : '商品列表'
         };
-        // pass options to ajaxForm
-        console.log(jq('#exportFm').length);
-        debugger;
-        jq('#exportFm').ajaxForm(options);*/
+        param = jq.extend(param, page.fm.serializeObject());
+        system.download(url,param);
     },
     add: function () {
         var page = window.page.goods;

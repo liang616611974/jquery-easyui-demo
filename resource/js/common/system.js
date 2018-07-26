@@ -1,7 +1,7 @@
 ;
 var system = (function ($) {
         var root = $("#contDiv"); // 下载使用的表单
-        var exportFm = $("exportFm"); // 下载使用的表单
+        var exportFm = $("#exportFm"); // 下载使用的表单
         var inputSelector = "input[prop]";
         var btnSelector = "a[prop]";
         var labelPosition = "top"; // 输入框标签位置
@@ -309,7 +309,7 @@ var system = (function ($) {
                 var isFirstParm = true;
                 for (f in param) {
                     var val = param[f];
-                    if(val==null){
+                    if(val==null || val==""){
                         continue;
                     }
                     if (isFirstParm) {
@@ -321,11 +321,16 @@ var system = (function ($) {
                 }
                 return newUrl;
             },
+            /**
+             * 下载文件
+             * @param url
+             * @param param
+             */
             download : function (url,param) {
                 url = encodeURI(system.getUrlWithParam(url, param));
                 console.log(url);
-                $("#exportFm").attr("action", url);
-                jq("#exportFm").submit();
+                exportFm.attr("action", url);
+                exportFm.submit();
             }
 
         };
