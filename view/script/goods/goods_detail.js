@@ -18,6 +18,7 @@ page.goodsDetail.init = {
     initForm: function (page) {
         system.initInput(page.fm);
         system.initBtn(page.root.find(".page-btn"), page.fucnName);
+        system.initBtn(page.root.find(".page-upload"), page.fucnName);
         adminUI.loadForm(page.fm, page.data);
         if(page.action == "detail"){
             system.disableInput(page.fm);
@@ -51,6 +52,25 @@ page.goodsDetail.fucn = {
     cancel: function () {
         var page = window.page.goodsDetail;
         adminUI.closeWindow(page);
+    },
+    upload : function () {
+        var page = window.page.goodsDetail;
+        var options = {
+            type : "POST",
+            //target:     '#divToUpdate',
+            url: "/dict/common/uploadImg",
+            data : {dowloadName:"商品列表"}, // 除了表单，额外传送的数据
+            //dataType : "json", // 返回数据的格式
+            //resetForm : true, //  调用成功后，是否重置表单
+            success:    function(data) {
+                console.log(data);
+                //alert('Thanks for your comment!');
+            }
+        };
+        // pass options to ajaxForm
+        //console.log($('#exportFm').length);
+        //debugger;
+        page.root.find('.page-upload form').ajaxSubmit(options);
     }
 };
 

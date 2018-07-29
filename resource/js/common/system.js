@@ -191,6 +191,7 @@ var system = (function ($) {
              */
             initBtn: function (scope, fucnName) {
                 var objs = scope.find(btnSelector);
+                console.log(objs.length);
                 defineBtns(objs, fucnName);
             },
 
