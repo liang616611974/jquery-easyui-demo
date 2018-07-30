@@ -23,6 +23,9 @@ page.goodsDetail.init = {
         if(page.action == "detail"){
             system.disableInput(page.fm);
             system.hideBtn(page.root.find(".page-btn"));
+            // 隐藏文件选择框
+            page.root.find(".page-upload").hide();
+            //system.hideBtn(page.root.find(".page-upload"));
         }
     }
 }
@@ -55,6 +58,11 @@ page.goodsDetail.fucn = {
     },
     upload : function () {
         var page = window.page.goodsDetail;
+        var fileName = page.get("img").filebox("getValue");
+        console.log(fileName);
+        if(!fileName || fileName=="") {
+            adminUI.alertInfo("请选择要上传的图片");
+        }
         var options = {
             type : "POST",
             //target:     '#divToUpdate',
@@ -70,7 +78,9 @@ page.goodsDetail.fucn = {
         // pass options to ajaxForm
         //console.log($('#exportFm').length);
         //debugger;
-        page.root.find('.page-upload form').ajaxSubmit(options);
+        console.log(options);
+        console.log(page.get("multiFm").length);
+        page.get("multiFm").ajaxSubmit(options);
     }
 };
 

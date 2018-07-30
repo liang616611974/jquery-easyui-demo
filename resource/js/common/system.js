@@ -10,6 +10,7 @@ var system = (function ($) {
         var btnWidth = 100; // 按钮长度
         var btnClass = "btn1 btn2"; // 按钮样式
         var dgOptBtnClass = 'dg-opt-btn'; // 表格操作按钮样式
+        var imgType = [ 'image/jpg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/png' ]; // 图片格式
         var dicts; // 字典数据集合
 
         /**
@@ -77,6 +78,9 @@ var system = (function ($) {
                     obj.next("span").children("input").css("text-align","right");
                 } else if(type == "file"){
                     //prop.buttonText = prop.label.replace("：","");
+                    adminUI.filebox(obj, prop);
+                } else if (type == 'img'){
+                    prop.accept = imgType;
                     adminUI.filebox(obj, prop);
                 } else {
                     adminUI.textbox(obj, prop);
@@ -191,7 +195,7 @@ var system = (function ($) {
              */
             initBtn: function (scope, fucnName) {
                 var objs = scope.find(btnSelector);
-                console.log(objs.length);
+                //console.log(objs.length);
                 defineBtns(objs, fucnName);
             },
 

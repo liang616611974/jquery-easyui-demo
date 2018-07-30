@@ -14,8 +14,10 @@
                     <span><input name="produceDate" prop="label:'生产日期：';prompt:'请选择生产日期';type:'date'"/></span>
                 </div>
                 <div class="page-upload">
-                    <form enctype="multipart/form-data">
-                        <input name="" prop="label:'商品图片：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file';accept:'image/gif,image/png'"/>
+                    <form id="multiFm" enctype="multipart/form-data">
+                        <div>
+                            <input id="img" name="img" prop="label:'商品图片：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'img'"/>
+                        </div>
                     </form>
                     <a prop="event:'upload'" style="margin-left: 10px;">上传</a>
                 </div>

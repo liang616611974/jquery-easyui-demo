@@ -70,19 +70,19 @@ page.dict.fucn = {
     add: function (p1, p2) {
         var page = window.page.dict;
         page.action = "add";
-        adminUI.openWindow(page.window, "新增字典", "page/dict/dict_detail.html");
+        adminUI.openWindow(page,"新增字典", "page/dict/dict_detail.html");
     },
     modify: function (index) {
         var page = window.page.dict;
         var row = system.getDgRow(page.dg, index);
         page.action = "modify";
-        adminUI.openWindow(page.window, "修改字典", "page/dict/dict_detail.html");
+        adminUI.openWindow(page,"修改字典", "page/dict/dict_detail.html");
     },
     detail: function (index) {
         var page = window.page.dict;
         var row = system.getDgRow(page.dg, index);
         page.action = "detail";
-        adminUI.openWindow(page.window, "字典详情--" + row.name, "page/dict/dict_detail.html");
+        adminUI.openWindow(page, "字典详情--" + row.name, "page/dict/dict_detail.html");
     },
     delete: function () {
         adminUI.confirm("删除字典", "确认删除字典?", function (r) {
