@@ -132,6 +132,26 @@ var system = (function ($) {
             adminUI.selectbox(obj, prop);
         }
 
+        /**
+         * 判断浏览器是否是IE浏览器
+         */
+        function isIE() {
+            if (!!window.ActiveXObject || "ActiveXObject" in window){
+                return true;
+            }
+            return false;
+        }
+
+        /**
+         * 判断是否是Json对象
+         * @param obj
+         * @returns {boolean}
+         */
+        function isJson(obj) {
+            var isJson = typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
+            return isJson;
+        }
+
         return {
             /**
              * 初始化页面变量
@@ -333,11 +353,38 @@ var system = (function ($) {
              */
             download : function (url,param) {
                 url = encodeURI(system.getUrlWithParam(url, param));
-                console.log(url);
+                //console.log(url);
                 exportFm.attr("action", url);
                 exportFm.submit();
+            },
+            /**
+             * 上传文件
+             * @param url
+             * @param param
+             * @param success
+             */
+            upload : function (fm,url,param,success) {
+                var options = {
+                    type : "POST",
+                    //target:     '#divToUpdate',
+                    url: url,
+                    data : param, // 除了表单，额外传送的数据
+                    dataType : "json", // 返回数据的格式
+                    resetForm : true, //  调用成功后，是否重置表单
+                    // 成功回调函数
+                    success:  function(data) {
+                        if(isIE() && !isJson()){
+                            data = JSON.parse(data);
+                        }
+                        if(data.code && data.code!= '200'){
+                            adminUI.alertErr(data.msg);
+                            return false;
+                        }
+                        success(data);
+                    }
+                };
+                fm.ajaxSubmit(options);
             }
-
         };
     }
 )(jQuery);

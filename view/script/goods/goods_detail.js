@@ -60,11 +60,21 @@ page.goodsDetail.fucn = {
     upload : function () {
         var page = window.page.goodsDetail;
         var fileName = page.get("img").filebox("getValue");
-        console.log(fileName);
+        //console.log(fileName);
         if(!fileName || fileName=="") {
             adminUI.alertInfo("请选择要上传的图片");
         }
-        var options = {
+        var url,param;
+        url = "/dict/common/uploadImg";
+        param = {dowloadName:"商品列表"};
+        system.upload(page.get("multiFm"),url,param,function (data) {
+            console.log(data.data);
+            page.fm.find("input[name='imgUrl']").val(data.data.url);
+            //page.root.find(".page-img-list img").attr("src", data.data.url);
+            page.root.find(".page-img-list img").css("background-image",":url('" +data.data.url+ "')" );
+        });
+
+       /* var options = {
             type : "POST",
             //target:     '#divToUpdate',
             url: "/dict/common/uploadImg",
@@ -72,16 +82,11 @@ page.goodsDetail.fucn = {
             //dataType : "json", // 返回数据的格式
             //resetForm : true, //  调用成功后，是否重置表单
             success:    function(data) {
-                console.log(data);
+
                 //alert('Thanks for your comment!');
             }
         };
-        // pass options to ajaxForm
-        //console.log($('#exportFm').length);
-        //debugger;
-        console.log(options);
-        console.log(page.get("multiFm").length);
-        page.get("multiFm").ajaxSubmit(options);
+        page.get("multiFm").ajaxSubmit(options);*/
     }
 };
 
