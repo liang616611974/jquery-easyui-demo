@@ -13,19 +13,17 @@
                                  data-options="validType:['minLength[2]','maxLength[20]']"/></span>
                     <span><input name="produceDate" prop="label:'生产日期：';prompt:'请选择生产日期';type:'date'"/></span>
                 </div>
-                <div class="page-upload">
-                    <form id="multiFm" enctype="multipart/form-data">
-                        <div>
-                            <input id="img" name="img" prop="label:'商品图片：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'img'"/>
-                        </div>
-                    </form>
-                    <a prop="event:'upload'" style="margin-left: 10px;">上传</a>
-                </div>
+            </form>
+        </div>
+        <div class="page-upload">
+            <form id="multiFm" enctype="multipart/form-data">
+                <input id="img" name="img" prop="label:'商品图片：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'img'"/>
+                <a prop="event:'upload'" style="margin-left: 10px;">上传</a>
             </form>
         </div>
         <div class="page-btn">
-            <a  prop="event:'save'">保存</a>
-            <a  prop="event:'cancel'">取消</a>
+            <a prop="event:'save'">保存</a>
+            <a prop="event:'cancel'">取消</a>
         </div>
     </div>
 

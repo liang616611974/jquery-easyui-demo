@@ -17,6 +17,7 @@ page.goodsDetail.init = {
 
     initForm: function (page) {
         system.initInput(page.fm);
+        system.initInput(page.root.find(".page-upload"));
         system.initBtn(page.root.find(".page-btn"), page.fucnName);
         system.initBtn(page.root.find(".page-upload"), page.fucnName);
         adminUI.loadForm(page.fm, page.data);
