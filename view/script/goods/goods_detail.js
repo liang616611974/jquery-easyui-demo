@@ -21,6 +21,9 @@ page.goodsDetail.init = {
         system.initBtn(page.root.find(".page-btn"), page.fucnName);
         system.initBtn(page.root.find(".page-upload"), page.fucnName);
         adminUI.loadForm(page.fm, page.data);
+        if(page.data.imgUrl){
+            page.root.find(".page-img-list img").attr("src", page.data.imgUrl);
+        }
         if(page.action == "detail"){
             system.disableInput(page.fm);
             system.hideBtn(page.root.find(".page-btn"));
@@ -70,8 +73,8 @@ page.goodsDetail.fucn = {
         system.upload(page.get("multiFm"),url,param,function (data) {
             console.log(data.data);
             page.fm.find("input[name='imgUrl']").val(data.data.url);
-            //page.root.find(".page-img-list img").attr("src", data.data.url);
-            page.root.find(".page-img-list img").css("background-image",":url('" +data.data.url+ "')" );
+            page.root.find(".page-img-list img").attr("src", data.data.url);
+            //page.root.find(".page-img-list img").css("background-image",":url('" +data.data.url+ "')" );
         });
 
        /* var options = {

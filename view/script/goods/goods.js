@@ -34,6 +34,7 @@ page.goods.init = {
                 {field: 'price', title: '价格', width: 100},
                 {field: 'producer', title: '生产商', width: 100},
                 {field: 'produceDate', title: '生产日期', width: 100},
+                {field: 'imgUrl', title: '图片', width: 100},
                 {field: 'creUser', title: '创建用户', width: 100},
                 {field: 'creTime', title: '创建时间', width: 100},
                 {field: 'mdfUser', title: '修改用户', width: 100},
