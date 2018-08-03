@@ -40,13 +40,14 @@ page.goodsDetail.fucn = {
         //var ipt = page.fm.find("input[name='goodsName']");
         var ipt = page.get("goodsName");
         var ipt = page.get("goodsType");
-        var ipt = page.get("produceDate");
-        var ipt = page.get("price");
+        //var ipt = page.get("produceDate");
+        //var ipt = page.get("price");
         //var ipt = page.get("img");
-        console.log(ipt.length);
+        //var ipt = page.get("produceDateTime");
+        //console.log(ipt.length);
         //var val = adminUI.getValue(ipt);
-        var val = adminUI.setValue(ipt,"222222");
-        console.log(val);
+        var val = adminUI.setValue(ipt,"VEHICLE");
+        //console.log(val);
     },
     save: function () {
         var page = window.page.goodsDetail;
@@ -79,6 +80,7 @@ page.goodsDetail.fucn = {
         //console.log(fileName);
         if(!fileName || fileName=="") {
             adminUI.alertInfo("请选择要上传的图片");
+            return false;
         }
         var url,param;
         url = "/dict/common/uploadImg";

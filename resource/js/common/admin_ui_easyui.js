@@ -20,17 +20,26 @@ var adminUI = (function ($) {
          * @returns {*|{js, css, dependencies}}
          */
         setValue : function (obj,value) {
-            console.log(obj.attr("class"));
+            //console.log(obj.attr("class"));
             var type = obj.attr("class");
             if(type=="textbox-f") {
-                alert("文本框");
+                //alert("文本框");
+                return obj.textbox("setValue", value);
             }else if(type.indexOf("combobox-f")>-1){
-                alert("选择框");
+                //alert("选择框");
+                return obj.combobox("setValue", value);
             }else if(type.indexOf("datebox-f")>-1){
-                alert("选择框");
+                //alert("日期框");
+                return obj.datebox("setValue", value);
+            }else if(type.indexOf("datetimebox-f")>-1){
+                //alert("时间框");
+                return obj.datetimebox("setValue", value);
             }else if(type.indexOf("numberbox-f")>-1){
-                alert("数字框");
+                //alert("数字框");
                 return obj.numberbox("setValue",value);
+            }else if(type.indexOf("filebox-f")>-1){
+                adminUI.alertWarn("文件框不能setValue，请手动选择文件！")
+                return false;
             }
             return obj.textbox("setValue",value);
         },
@@ -42,13 +51,7 @@ var adminUI = (function ($) {
             }
             return obj.textbox(param1, param2);
         },
-        /*	textbox : function(id,fucnName,param){
-                if(fucnName=='getValue'){
-                    return $("#" + id).textbox('getValue');
-                }else if(fucnName=='setValue'){
-                    return $("#" + id).textbox('setValue',param);
-                }
-            },*/
+
         /** 日期框 */
         selectbox: function (obj, param1, param2) {
             if (arguments.length <= 2) {
@@ -121,7 +124,7 @@ var adminUI = (function ($) {
                         param1.pagination = true;
                     }
                     param1.rownumbers = true;
-                    param1.singleSelect = true;
+                    //param1.singleSelect = true; // 选择单行
 
                     // 如果是请求远程服务数据
                     if(param1.url && param1.url!=""){

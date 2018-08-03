@@ -5,7 +5,7 @@
                 <div class="fm-input fm-input-left">
                     <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"
                                  data-options="validType:['minLength[2]','maxLength[20]']" /></span>
-                    <span><input name="goodsType" prop="label:'商品类型：';prompt:'请选择商品类型';type:'select';dict:'GOODS_TYPE'"/></span>
+                    <span><input name="goodsType" prop="label:'商品类型：';prompt:'请选择商品类型';type:'select';dict:'GOODS_FIRST_TYPE'"/></span>
                     <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'"/></span>
                     <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
                                  data-options="validType:['minLength[2]','maxLength[10]']"/></span>
@@ -21,6 +21,7 @@
             <a id="queryBtn" prop="event:'query'">查询</a>
             <a id="resetBtn" prop="event:'reset'">重置</a>
             <a id="addBtn" prop="event:'add'">新增</a>
+            <a id="removeBtn" prop="event:'removeChecked'">删除</a>
             <a id="exportBtn" prop="event:'export'">导出</a>
         </div>
     </div>

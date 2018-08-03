@@ -10,6 +10,7 @@ var ajax = (function ($) {
     var tokenHeader = "asyncToken";
     var tokenKey = "token";
     var timeout = 180000;
+    var cPDelayTime = 300; // 关闭滚动条延迟时间
     return {
         /* /!** ajax请求 *!/
          ajax: function (url, type, timeout, async, cache, contentType, data, dataType, beforeSendFucn, successFucn, completeFucn, errorFucn) {
@@ -128,7 +129,7 @@ var ajax = (function ($) {
                 complete: function (xhr, status) {
                     setTimeout(function () {
                         adminUI.closeProgress();
-                    }, 500);
+                    }, cPDelayTime);
                 }
             });
         },
@@ -138,13 +139,14 @@ var ajax = (function ($) {
             $.ajax(param);
         },
 
-        post: function (url,param,success) {
+        post: function (url,param,success,error) {
             var request = {};
             request.method = 'post';
             request.url = url;
             request.data = param
             request.dataType = "json";
-            request.success = succeess;;
+            request.success = success;;
+            request.error = error;
             this.ajax(request);
         },
 
@@ -154,7 +156,7 @@ var ajax = (function ($) {
          * @param param
          * @param succeess
          */
-        postJson: function (url,param,succeess) {
+        postJson: function (url,param,success,error) {
             var request = {};
             request.method = 'post';
             request.url = url;
@@ -166,8 +168,9 @@ var ajax = (function ($) {
                     adminUI.alertErr(data.msg);
                     return false;
                 }
-                succeess(data);
-            },
+                success(data);
+            };
+            request.error = error;
             this.ajax(request);
         }
     }

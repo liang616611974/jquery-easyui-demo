@@ -29,7 +29,7 @@ page.goods.init = {
                 {field: 'goodsName', title: '商品名称', width: 100},
                 {field: 'goodsType', title: '商品类型', width: 100,
                     formatter: function (value, row, index) {
-                        return system.getDictDesc("GOODS_TYPE", value);
+                        return system.getDictDesc("GOODS_FIRST_TYPE", value);
                     }},
                 {field: 'price', title: '价格', width: 100},
                 {field: 'producer', title: '生产商', width: 100},
@@ -43,7 +43,7 @@ page.goods.init = {
                     // todo 考虑可以做到省略掉page.getFucnAllName
                         return system.getOptBtn({title: "修改", event: page.getFucnAllName("modify", [index])})
                             + system.getOptBtn({title: "详情", event: page.getFucnAllName("detail",[index])})
-                            + system.getOptBtn({title: "删除", event: page.getFucnAllName("delete",[index])})
+                            + system.getOptBtn({title: "删除", event: page.getFucnAllName("remove",[index])})
                             + system.getOptBtn({title: "测试隐藏", event: page.getFucnAllName("test"),isShow:false});
                     },}
             ]],
@@ -111,9 +111,9 @@ page.goods.fucn = {
         window.page.param = row;
         adminUI.openWindow(page,"商品详情","page/goods/goods_detail.html");
     },
-    delete: function (index) {
+    remove: function (index) {
         var page = window.page.goods;
-        var row = system.getDgRow(page.dg,index);
+        var row = system.getDgRow(page.dg, index);
         if(!row){
             adminUI.alertInfo("请选择要删除的数据！");
             return false;
@@ -122,10 +122,31 @@ page.goods.fucn = {
         var param = {
             ids:[row.id]
         };
-       /* jq.each(row,function (i,n) {
+        adminUI.confirm("删除商品","确认删除商品?",function (r) {
+            if(!r){
+                return false;
+            }
+            ajax.postJson("/goods/remove",param,function () {
+                adminUI.alertInfo("删除成功");
+                adminUI.reloadDg(page.dg);
+            })
+        })
+    },
+    removeChecked: function (index) {
+        var page = window.page.goods;
+        var rows = system.getDgCheckedRow(page.dg);
+        if(!rows || rows.length==0){
+            adminUI.alertInfo("请选择要删除的数据！");
+            return false;
+        }
+        // 构造请求参数
+        var param = {
+            ids:[]
+        };
+        jq.each(rows,function (i,n) {
             param.ids.push(n.id);
-        });*/
-        //console.log(param.ids);
+        });
+        console.log(param.ids);
         adminUI.confirm("删除商品","确认删除商品?",function (r) {
             if(!r){
                 return false;
