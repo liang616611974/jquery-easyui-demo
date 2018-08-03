@@ -5,13 +5,13 @@
                 <div class="fm-input">
                     <input name="id" type="hidden"/>
                     <input name="imgUrl" type="hidden"/>
-                    <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"
+                    <span><input id="goodsName" name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"
                                  data-options="required:true,validType:['minLength[2]','maxLength[20]']"/><label class="rq">*</label></span>
-                    <span><input name="goodsType" prop="label:'商品类型：';type:'select';dict:'GOODS_TYPE'" required="true"/><label class="rq">*</label></span>
-                    <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'" required="true"/><label class="rq">*</label></span>
-                    <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
+                    <span><input id="goodsType" name="goodsType" prop="label:'商品类型：';type:'select';dict:'GOODS_TYPE'" required="true"/><label class="rq">*</label></span>
+                    <span><input  id="price" name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'" required="true"/><label class="rq">*</label></span>
+                    <span><input  id="producer" name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
                                  data-options="validType:['minLength[2]','maxLength[20]']"/></span>
-                    <span><input name="produceDate" prop="label:'生产日期：';prompt:'请选择生产日期';type:'date'"/></span>
+                    <span><input  id="produceDate" name="produceDate" prop="label:'生产日期：';prompt:'请选择生产日期';type:'date'"/></span>
                 </div>
             </form>
         </div>
@@ -26,6 +26,7 @@
             <img src="" style="width: 600px;height: 400px;" onerror="this.src='../resource/img/page/default.jpg';this.onerror=null"/>
         </div>
         <div class="page-btn">
+            <a id="testBtn" prop="event:'test'">测试</a>
             <a prop="event:'save'">保存</a>
             <a prop="event:'cancel'">取消</a>
         </div>

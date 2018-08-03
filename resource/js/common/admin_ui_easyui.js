@@ -4,6 +4,37 @@ var adminUI = (function ($) {
     var tabMaxLength = 10;
     return {
 
+        /**
+         * 获取输入框的值
+         * @param obj
+         * @returns {*|{js, css, dependencies}}
+         */
+        getValue : function (obj) {
+            return obj.textbox("getValue");
+        },
+
+        /**
+         * 设置输入框的值
+         * @param obj
+         * @param value
+         * @returns {*|{js, css, dependencies}}
+         */
+        setValue : function (obj,value) {
+            console.log(obj.attr("class"));
+            var type = obj.attr("class");
+            if(type=="textbox-f") {
+                alert("文本框");
+            }else if(type.indexOf("combobox-f")>-1){
+                alert("选择框");
+            }else if(type.indexOf("datebox-f")>-1){
+                alert("选择框");
+            }else if(type.indexOf("numberbox-f")>-1){
+                alert("数字框");
+                return obj.numberbox("setValue",value);
+            }
+            return obj.textbox("setValue",value);
+        },
+
         /** 文本框 */
         textbox: function (obj, param1, param2) {
             if (arguments.length <= 2) {

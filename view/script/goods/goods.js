@@ -57,6 +57,14 @@ page.goods.init = {
 }
 
 page.goods.fucn = {
+    test : function () {
+        var page = window.page.goods;
+        var ipt = page.fm.find("input[name='goodsName']");
+        console.log(ipt.length);
+        var val = adminUI.getValue(ipt);
+        //var val = adminUI.textbox(page.fm.find("input[name='goodsName']","getValue"));
+        console.log(val);
+    },
     query : function () {
         var page = window.page.goods;
         if(!adminUI.validateForm(page.fm)){

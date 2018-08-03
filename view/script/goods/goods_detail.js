@@ -35,6 +35,19 @@ page.goodsDetail.init = {
 }
 
 page.goodsDetail.fucn = {
+    test : function () {
+        var page = window.page.goodsDetail;
+        //var ipt = page.fm.find("input[name='goodsName']");
+        var ipt = page.get("goodsName");
+        var ipt = page.get("goodsType");
+        var ipt = page.get("produceDate");
+        var ipt = page.get("price");
+        //var ipt = page.get("img");
+        console.log(ipt.length);
+        //var val = adminUI.getValue(ipt);
+        var val = adminUI.setValue(ipt,"222222");
+        console.log(val);
+    },
     save: function () {
         var page = window.page.goodsDetail;
         if(!adminUI.validateForm(page.fm)){
@@ -62,7 +75,7 @@ page.goodsDetail.fucn = {
     },
     upload : function () {
         var page = window.page.goodsDetail;
-        var fileName = page.get("img").filebox("getValue");
+        var fileName = adminUI.getValue(page.get("img"));
         //console.log(fileName);
         if(!fileName || fileName=="") {
             adminUI.alertInfo("请选择要上传的图片");
