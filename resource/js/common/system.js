@@ -12,8 +12,6 @@ var system = (function ($) {
         var dgOptBtnClass = 'dg-opt-btn'; // 表格操作按钮样式
         var imgType = ['image/jpg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/png']; // 图片格式
         var dicts = {}; // 字典数据集合
-        var dictUrl = "/dict/webCache"; // 获取字典的数据的接口
-        var dictParam = {sysCode:"SCD"}; // 获取字典的数据的接口的请求参数
 
         /**
          * 自定义属性prop转成json对象
@@ -82,7 +80,9 @@ var system = (function ($) {
                     //prop.buttonText = prop.label.replace("：","");
                     adminUI.filebox(obj, prop);
                 } else if (type == 'img') {
-                    prop.accept = imgType;
+                    if (!prop.accept) {
+                        prop.accept = imgType;
+                    }
                     adminUI.filebox(obj, prop);
                 } else {
                     adminUI.textbox(obj, prop);
@@ -133,8 +133,8 @@ var system = (function ($) {
             // 默认选择第一个元素
             if (!prop.onLoadSuccess) {
                 prop.onLoadSuccess = function () {
-                    var data = adminUI.selectbox(obj,"getData");
-                    (data != null && data.length > 0) ? adminUI.selectbox(obj,"setValue",data[0].dictCode) : "";
+                    var data = adminUI.selectbox(obj, "getData");
+                    (data != null && data.length > 0) ? adminUI.selectbox(obj, "setValue", data[0].dictCode) : "";
                 }
             }
 
@@ -316,23 +316,26 @@ var system = (function ($) {
             /**
              * 设置字典集合
              */
-            setDicts: function () {
-               /* dicts = {
-                    "GOODS_TYPE": [
-                        {"dictCode": "CLOTHING", "dictDesc": "服装"},
-                        {"dictCode": "FOOD", "dictDesc": "食品"},
-                        {"dictCode": "HOUSEHOLD", "dictDesc": "家居用品"},
-                        {"dictCode": "VEHICLE", "dictDesc": "交通工具"}
-                    ]
-                }*/
+            setDicts: function (url, param, success) {
+                /* dicts = {
+                     "GOODS_TYPE": [
+                         {"dictCode": "CLOTHING", "dictDesc": "服装"},
+                         {"dictCode": "FOOD", "dictDesc": "食品"},
+                         {"dictCode": "HOUSEHOLD", "dictDesc": "家居用品"},
+                         {"dictCode": "VEHICLE", "dictDesc": "交通工具"}
+                     ]
+                 }*/
                 // 公用的字典
                 dicts["TRUE_FALSE"] = [
                     {"dictCode": true, "dictDesc": "是"},
                     {"dictCode": false, "dictDesc": "否"}
                 ];
-                ajax.postJson(dictUrl,dictParam,function (data) {
-                    $.extend(dicts,data.data,true);
-                    console.log(dicts);
+                ajax.postJson(url, param, function (data) {
+                    $.extend(dicts, data.data, true);
+                    if(success){
+                        success(data);
+                    }
+                    //console.log(dicts);
                 });
             },
             /**

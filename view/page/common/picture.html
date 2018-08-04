@@ -1,0 +1,18 @@
+<div id="pictureDiv" class="page">
+    <div class="dg-toolbar">
+        <div class="page-upload">
+            <form id="multiFm" enctype="multipart/form-data">
+                <input id="img" name="img" prop="label:'商品图片：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'img'"
+                       validType="fileSize[100,'kb']"
+                />
+                <a prop="event:'upload'" style="margin-left: 10px;">上传</a>
+            </form>
+        </div>
+        <div class="page-img-list" style="margin-top: 10px;">
+            <!--<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533068358555&di=3d68f5150514456a12c7effd88b35d1f&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3289761550%2C697278018%26fm%3D214%26gp%3D0.jpg" style="width: 600px;height: 400px;" onerror="this.src='../resource/img/page/default.jpg';this.onerror=null"/>-->
+            <img id="pic" src="" style="width: 400px;" onerror="this.src='../resource/img/page/default.jpg';this.onerror=null"/>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="./script/common/picture.js"></script>

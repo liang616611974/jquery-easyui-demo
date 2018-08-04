@@ -10,7 +10,7 @@ var ajax = (function ($) {
     var tokenHeader = "asyncToken";
     var tokenKey = "token";
     var timeout = 180000;
-    var cPDelayTime = 300; // 关闭滚动条延迟时间
+    var closeProgressDelayTime = 300; // 关闭滚动条延迟时间
     return {
         /* /!** ajax请求 *!/
          ajax: function (url, type, timeout, async, cache, contentType, data, dataType, beforeSendFucn, successFucn, completeFucn, errorFucn) {
@@ -129,7 +129,7 @@ var ajax = (function ($) {
                 complete: function (xhr, status) {
                     setTimeout(function () {
                         adminUI.closeProgress();
-                    }, cPDelayTime);
+                    }, closeProgressDelayTime);
                 }
             });
         },

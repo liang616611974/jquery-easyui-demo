@@ -22,7 +22,9 @@ page.goodsDetail.init = {
         system.initBtn(page.root.find(".page-upload"), page.fucnName);
         adminUI.loadForm(page.fm, page.data);
         if(page.data.imgUrl){
-            page.root.find(".page-img-list img").attr("src", page.data.imgUrl);
+            var imgDiv = page.root.find(".page-img-list");
+            imgDiv.find("#pic").attr("src", page.data.imgUrl);
+            imgDiv.html(imgDiv.html());
         }
         if(page.action == "detail"){
             system.disableInput(page.fm);
@@ -91,20 +93,6 @@ page.goodsDetail.fucn = {
             page.root.find(".page-img-list img").attr("src", data.data.url);
             //page.root.find(".page-img-list img").css("background-image",":url('" +data.data.url+ "')" );
         });
-
-       /* var options = {
-            type : "POST",
-            //target:     '#divToUpdate',
-            url: "/dict/common/uploadImg",
-            data : {dowloadName:"商品列表"}, // 除了表单，额外传送的数据
-            //dataType : "json", // 返回数据的格式
-            //resetForm : true, //  调用成功后，是否重置表单
-            success:    function(data) {
-
-                //alert('Thanks for your comment!');
-            }
-        };
-        page.get("multiFm").ajaxSubmit(options);*/
     }
 };
 
