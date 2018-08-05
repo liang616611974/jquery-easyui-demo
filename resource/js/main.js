@@ -57,6 +57,14 @@ var navTree = [{
                 "url": window.rootPage + "/common/picture.html",
                 "price": 100
             }
+        }, {
+            "id": 14,
+            "text": "商品管理",
+            "attributes": {
+                "url": window.rootPage + "/goods1/goods.html",
+                "price": 100
+            },
+
         }
     ]
 }];

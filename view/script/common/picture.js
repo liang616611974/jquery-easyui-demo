@@ -9,6 +9,11 @@ page.picture.init = {
     initForm: function (page) {
         system.initInput(page.root.find(".page-upload"));
         system.initBtn(page.root.find(".page-upload"), page.fucnName);
+        // 加入图片
+        var img;
+        var imgParam = {id:"pic",style:"width:400px;"}
+        img = system.getImg(imgParam);
+        page.root.find(".page-img-list").append(img);
     }
 }
 

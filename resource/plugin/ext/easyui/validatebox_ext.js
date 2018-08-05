@@ -101,15 +101,43 @@
         },
         same: {
             validator: function (value, param) {
-                if ($("#" + param[0]).val() != "" && value != "") {
-                    return $("#" + param[0]).val() == value;
-                } else {
-                    return true;
+                var oVal = adminUI.getValue($("#" + param[0])); // 目标对象的值
+                if (oVal != "" && value != "") {
+                    return oVal == value;
                 }
+                return true;
             },
             message: '两次输入的密码不一致！'
         },
-
+        /**
+         * 比较两个元素大小
+         * param[0] : 需要比较的目标id
+         * param[1] : 比较对象类型，默认字符串，比如：text,number、date、datetime
+         * param[2] : 比较方式，大于、等于、小于、大于等于、小于等于
+         */
+        compare:{
+            validator: function (value, param) {
+                var oVal,type,way;
+                oVal = adminUI.getValue($("#" + param[0])); // 目标对象的值
+                type = param[1]?param[1]:"text";
+                way = param[2];
+                if (oVal == "" || value == "") {
+                    return true;
+                }
+                if(type == "date"){
+                    oVal = new Date(oVal).getTime();
+                    value = new Date(value).getTime();
+                }else if(type == "datetime"){
+                    oVal = new Date(oVal).getTime();
+                    value = new Date(value).getTime();
+                }else if(type == "number"){
+                    oVal = parseFloat(oVal.replace(/-/g, ""));
+                    value = parseFloat(value.replace(/-/g, ""));
+                }
+                return validator.compare(oVal, value, way);
+            },
+            message: '{3}'
+        },
         /**
          * filebox验证文件大小的规则函数
          * 如：validType : ['fileSize[1,"MB"]']

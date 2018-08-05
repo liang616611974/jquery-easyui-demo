@@ -21,11 +21,13 @@ page.goodsDetail.init = {
         system.initBtn(page.root.find(".page-btn"), page.fucnName);
         system.initBtn(page.root.find(".page-upload"), page.fucnName);
         adminUI.loadForm(page.fm, page.data);
+        var img;
         if(page.data.imgUrl){
-            var imgDiv = page.root.find(".page-img-list");
-            imgDiv.find("#pic").attr("src", page.data.imgUrl);
-            imgDiv.html(imgDiv.html());
+            img = system.getImg({style:"width:400px;",src : page.data.imgUrl});
+        }else {
+            img = system.getImg({style:"width:400px;"});
         }
+        page.root.find(".page-img-list").append(img);
         if(page.action == "detail"){
             system.disableInput(page.fm);
             system.hideBtn(page.root.find(".page-btn"));
@@ -43,13 +45,13 @@ page.goodsDetail.fucn = {
         var ipt = page.get("goodsName");
         var ipt = page.get("goodsType");
         //var ipt = page.get("produceDate");
-        //var ipt = page.get("price");
+         var ipt = page.get("price");
         //var ipt = page.get("img");
         //var ipt = page.get("produceDateTime");
         //console.log(ipt.length);
-        //var val = adminUI.getValue(ipt);
-        var val = adminUI.setValue(ipt,"VEHICLE");
-        //console.log(val);
+        var val = adminUI.getValue(ipt);
+        //var val = adminUI.setValue(ipt,"VEHICLE");
+        console.log(val);
     },
     save: function () {
         var page = window.page.goodsDetail;

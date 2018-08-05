@@ -9,8 +9,10 @@
                     <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'"/></span>
                     <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
                                  data-options="validType:['minLength[2]','maxLength[10]']"/></span>
-                    <span><input name="produceDateBegin" prop="label:'生产日期开始：';prompt:'请选择生产日期开始';type:'date'"/></span>
-                    <span><input name="produceDateEnd" prop="label:'生产日期结束：';prompt:'请选择生产日期结束';type:'date'"/></span>
+                    <span><input id="pdBegin" name="produceDateBegin" prop="label:'生产日期开始：';prompt:'请选择生产日期开始';type:'date'"
+                                  validType="compare['pdEnd','date','<=','生产日期开始应该小于等于生产日期结束']" /></span>
+                    <span><input id="pdEnd" name="produceDateEnd" prop="label:'生产日期结束：';prompt:'请选择生产日期结束';type:'date'"
+                                 validType="compare['pdBegin','date','>=','生产日期结束应该大于等于生产日期开始']" /></span>
                 </div>
                <!-- <div><input name="amount" prop="label:'机密文件：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file'"/></div>-->
             </form>

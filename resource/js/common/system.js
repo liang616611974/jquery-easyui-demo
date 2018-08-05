@@ -11,6 +11,7 @@ var system = (function ($) {
         var btnClass = "btn1 btn2"; // 按钮样式
         var dgOptBtnClass = 'dg-opt-btn'; // 表格操作按钮样式
         var imgType = ['image/jpg', 'image/bmp', 'image/jpeg', 'image/gif', 'image/png']; // 图片格式
+        var defaultImg = "../resource/img/page/default.jpg"; // 默认展示图片
         var dicts = {}; // 字典数据集合
 
         /**
@@ -397,7 +398,7 @@ var system = (function ($) {
              * @param param
              * @param success
              */
-            upload: function (fm, url, param, success) {
+            upload : function (fm, url, param, success) {
                 var options = {
                     type: "POST",
                     //target:     '#divToUpdate',
@@ -418,6 +419,15 @@ var system = (function ($) {
                     }
                 };
                 fm.ajaxSubmit(options);
+            },
+            /**
+             * 获取图片标签
+             * @param obj
+             * @returns {string}
+             */
+            getImg : function (obj) {
+                var img = "<img id='" + obj.id + "' src='" + obj.src + "' style='"+ obj.style +"' onerror=\"this.src='" + defaultImg+ "';this.onerror=null\"/>"
+                return img;
             }
         };
     }
