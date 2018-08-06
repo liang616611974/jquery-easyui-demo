@@ -9,6 +9,7 @@ var numUtil = (function () {
             if(!num || num == ""){
                 return "";
             }
+            num = num.toString();
             var result = '';
             var r = num.split(".")[1];// 小数点部分
             num = num.split(".")[0];

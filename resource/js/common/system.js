@@ -68,14 +68,28 @@ var system = (function ($) {
                     adminUI.datetimebox(obj, prop);
                 } else if (type == "select") {
                     defineSelect(obj, prop);
-                } else if (type == "number") {
-                    prop.min = 0;
-                    prop.max = 999999999;
+                } else if (type == "number" || type == "float") {
+                    if(!prop.min){
+                        prop.min = 0;
+                    }
+                    if(!prop.max){
+                        prop.max = 999999999;
+                    }
                     prop.precision = 2;
                     prop.groupSeparator = ',';
                     adminUI.numberbox(obj, prop);
                     //console.log(obj);
                     // 控制显示文本
+                    obj.next("span").children("input").css("text-align", "right");
+                } else if(type == "int"){
+                    if(!prop.min){
+                        prop.min = 0;
+                    }
+                    if(!prop.max){
+                        prop.max = 999999999;
+                    }
+                    //console.log(prop);
+                    adminUI.numberbox(obj, prop);
                     obj.next("span").children("input").css("text-align", "right");
                 } else if (type == "file") {
                     //prop.buttonText = prop.label.replace("：","");

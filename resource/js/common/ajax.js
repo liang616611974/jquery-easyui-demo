@@ -102,6 +102,9 @@ var ajax = (function ($) {
                         case(500):
                             adminUI.alertWarn("服务器系统内部错误");
                             break;
+                        case(400):
+                            adminUI.alertWarn("请求失败");
+                            break;
                         case(401):
                             adminUI.alertWarn("未登录");
                             break;
