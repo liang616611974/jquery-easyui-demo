@@ -23,7 +23,7 @@ jq(document).ready(function () {
     // 初始化字典数据
     var dictUrl = "/dict/webCache"; // 获取字典的数据的接口
     var dictParam = {sysCode: "SCD"}; // 获取字典的数据的接口的请求参数
-    system.setDicts(dictUrl,dictParam,function (data) {
+    system.setDicts(dictUrl, dictParam, function (data) {
         //console.log(data.data);
     });
 
@@ -32,39 +32,52 @@ jq(document).ready(function () {
 var rootPage = "./page";
 var navTree = [{
     "id": 1,
-    "text": "根节点",
+    "text": "系统",
     "iconCls": "icon-main-home",
     "children": [
         {
-            "id": 11,
-            "text": "字典管理",
-            "attributes": {
-                "url": window.rootPage + "/dict/dict.html",
-                "price": 100
-            },
-        }, {
-            "id": 12,
-            "text": "商品管理",
-            "attributes": {
-                "url": window.rootPage + "/goods/goods.html",
-                "price": 100
-            },
+            "id": 1,
+            "text": "公共模块",
+            "children": [
+                {
+                    "id": 11,
+                    "text": "字典管理",
+                    "attributes": {
+                        "url": window.rootPage + "/common/dict.html",
+                        "price": 100
+                    },
+                }, {
+                    "id": 12,
+                    "text": "商品管理",
+                    "attributes": {
+                        "url": window.rootPage + "/common/goods.html",
+                        "price": 100
+                    },
 
-        }, {
-            "id": 13,
-            "text": "图片管理",
-            "attributes": {
-                "url": window.rootPage + "/common/picture.html",
-                "price": 100
-            }
-        }, {
-            "id": 14,
-            "text": "商品管理",
-            "attributes": {
-                "url": window.rootPage + "/goods1/goods.html",
-                "price": 100
-            },
+                }, {
+                    "id": 13,
+                    "text": "图片管理",
+                    "attributes": {
+                        "url": window.rootPage + "/common/picture.html",
+                        "price": 100
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "text": "业务模块",
+            "children": [
+                {
+                    "id": 14,
+                    "text": "商品管理",
+                    "attributes": {
+                        "url": window.rootPage + "/goods/goods.html",
+                        "price": 100
+                    },
 
+                }
+            ]
         }
     ]
 }];

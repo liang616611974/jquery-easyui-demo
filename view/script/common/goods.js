@@ -10,17 +10,24 @@ page.goods.init = {
     initForm: function (page) {
         system.initInput(page.fm);
         system.initBtn(page.root.find(".page-btn"),page.fucnName);
+        adminUI.datebox(page.get("date"), "setValue", "2017-07-07");
     },
 
     initDg: function (page) {
         adminUI.datagrid(page.dg, {
+            //toolbar: '.dg-toolbar',
+            //title : "商品列表",
+            //rownumbers: true,
+            //fit:true,
+            //pagination: true,
+            //data: data,
             url : '/goods/queryPage',
             queryParams: {sortColumns: "id desc,cre_time desc"},
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
                 {field: 'id', title: '主键', width: 10, hidden: 'true'},
                 {field: 'goodsName', title: '商品名称', width: 100},
-                {field: 'goodsType', title: '商品类型(GOODS_FIRST_TYPE)', width: 100,
+                {field: 'goodsType', title: '商品类型', width: 100,
                     formatter: function (value, row, index) {
                         return system.getDictDesc("GOODS_FIRST_TYPE", value);
                     }
@@ -33,17 +40,17 @@ page.goods.init = {
                 {field: 'producer', title: '生产商', width: 100},
                 {field: 'produceDate', title: '生产日期', width: 100},
                 {field: 'imgUrl', title: '图片', width: 100},
-                {field: 'creTime', title: '创建时间', width: 100},
-                {field: 'mdfTime', title: '修改时间', width: 100},
                 {field: 'creUser', title: '创建用户', width: 100},
+                {field: 'creTime', title: '创建时间', width: 100},
                 {field: 'mdfUser', title: '修改用户', width: 100},
-                {field: 'oper', title: '操作', width: 400,
-                    formatter: function (value, row, index) {
+                {field: 'mdfTime', title: '修改时间', width: 100},
+                {field: 'oper', title: '操作', width: 400, formatter: function (value, row, index) {
+                    // todo 考虑可以做到省略掉page.getFucnAllName
                         return system.getOptBtn({title: "修改", event: page.getFucnAllName("modify", [index])})
                             + system.getOptBtn({title: "详情", event: page.getFucnAllName("detail",[index])})
-                            + system.getOptBtn({title: "删除", event: page.getFucnAllName("remove",[index])});
-                    }
-                }
+                            + system.getOptBtn({title: "删除", event: page.getFucnAllName("remove",[index])})
+                            + system.getOptBtn({title: "测试隐藏", event: page.getFucnAllName("test"),isShow:false});
+                    },}
             ]],
             onLoadSuccess: function (data) {
                 console.log("加载成功");
@@ -55,12 +62,22 @@ page.goods.init = {
 }
 
 page.goods.fucn = {
+    test : function () {
+        var page = window.page.goods;
+        var ipt = page.fm.find("input[name='goodsName']");
+        console.log(ipt.length);
+        var val = adminUI.getValue(ipt);
+        //var val = adminUI.textbox(page.fm.find("input[name='goodsName']","getValue"));
+        console.log(val);
+    },
     query : function () {
         var page = window.page.goods;
         if(!adminUI.validateForm(page.fm)){
             return false;
         }
         var param = page.fm.serializeObject();
+        //console.log(param);
+        //adminUI.datagrid(page.dg,'reload', param);
         adminUI.reloadDg(page.dg, param);
     },
     reset : function () {
@@ -83,21 +100,21 @@ page.goods.fucn = {
     add: function () {
         var page = window.page.goods;
         window.page.action = "add";
-        adminUI.openWindow(page,"商品新增", "page/goods/goods_detail.html");
+        adminUI.openWindow(page,"商品新增", "page/common/goods_detail.html");
     },
     modify : function (index) {
         var page = window.page.goods;
         var row = system.getDgRow(page.dg,index);
         window.page.action = "modify";
         window.page.param = row;
-        adminUI.openWindow(page,"商品修改", "page/goods/goods_detail.html");
+        adminUI.openWindow(page,"商品修改", "page/common/goods_detail.html");
     },
     detail : function (index) {
         var page = window.page.goods;
         var row = system.getDgRow(page.dg,index);
         window.page.action = "detail";
         window.page.param = row;
-        adminUI.openWindow(page,"商品详情","page/goods/goods_detail.html");
+        adminUI.openWindow(page,"商品详情","page/common/goods_detail.html");
     },
     remove: function (index) {
         var page = window.page.goods;

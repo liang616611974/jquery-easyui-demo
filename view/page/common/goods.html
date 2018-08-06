@@ -1,0 +1,38 @@
+<div id="goodsDiv" class="page">
+    <div class="dg-toolbar">
+        <div class="page-form">
+            <form id="fm">
+                <div class="fm-input fm-input-left">
+                    <span><input name="goodsName" prop="label:'商品名称：';prompt:'请填写商品名称';type:'text'"
+                                 data-options="validType:['minLength[2]','maxLength[20]']" /></span>
+                    <span><input name="goodsType" prop="label:'商品类型：';prompt:'请选择商品类型';type:'select';dict:'GOODS_FIRST_TYPE'"/></span>
+                    <span><input name="price" prop="label:'价格：';prompt:'请填写价格';type:'number'"/></span>
+                    <span><input name="producer" prop="label:'生产商：';prompt:'请填写生产商'"
+                                 data-options="validType:['minLength[2]','maxLength[10]']"/></span>
+                    <span><input id="pdBegin" name="produceDateBegin" prop="label:'生产日期开始：';prompt:'请选择生产日期开始';type:'date'"
+                                  validType="compare['pdEnd','date','<=','生产日期开始应该小于等于生产日期结束']" /></span>
+                    <span><input id="pdEnd" name="produceDateEnd" prop="label:'生产日期结束：';prompt:'请选择生产日期结束';type:'date'"
+                                 validType="compare['pdBegin','date','>=','生产日期结束应该大于等于生产日期开始']" /></span>
+                </div>
+               <!-- <div><input name="amount" prop="label:'机密文件：';prompt:'请选择文件';buttonText:'选择文件';width:550;type:'file'"/></div>-->
+            </form>
+        </div>
+
+        <div class="page-btn page-btn-right">
+            <!--<a id="testBtn" prop="event:'test'">测试</a>-->
+            <a id="queryBtn" prop="event:'query'">查询</a>
+            <a id="resetBtn" prop="event:'reset'">重置</a>
+            <a id="addBtn" prop="event:'add'">新增</a>
+            <a id="removeBtn" prop="event:'removeChecked'">删除</a>
+            <a id="exportBtn" prop="event:'export'">导出</a>
+        </div>
+    </div>
+
+    <div class="dg-table">
+        <table id="dg" style="width: 100%;height: 100%"></table>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="./script/common/goods.js"></script>
