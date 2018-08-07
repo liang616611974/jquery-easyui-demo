@@ -12,12 +12,13 @@
                     </span>
                     <span>
                         <input name="goodsType" required="true"
-                                prop="label:'商品类型：';type:'select';dict:'GOODS_FIRST_TYPE'"/>
+                               prop="label:'商品类型：';prompt:'请填写商品类型';type:'text'"
+                               data-options="validType:['minLength[2]','maxLength[20]']"/>
                         <label class="rq">*</label>
                     </span>
                     <span>
                         <input name="price" required="true"
-                                prop="label:'价格：';prompt:'请填写价格';type:'number'"/>
+                                prop="label:'价格：';prompt:'请填写价格';type:'float'"/>
                         <label class="rq">*</label>
                     </span>
                     <span>

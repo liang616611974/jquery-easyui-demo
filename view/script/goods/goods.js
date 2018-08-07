@@ -19,24 +19,20 @@ page.goods.init = {
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
                 {field: 'id', title: '主键', width: 10, hidden: 'true'},
-                {field: 'goodsName', title: '商品名称', width: 150},
-                {field: 'goodsType', title: '商品类型', width: 100,
-                    formatter: function (value, row, index) {
-                        return system.getDictDesc("GOODS_FIRST_TYPE", value);
-                    }
-                },
+                {field: 'goodsName', title: '商品名称', width: 100},
+                {field: 'goodsType', title: '商品类型', width: 100},
                 {field: 'price', title: '价格', width: 100,
                     formatter: function (value, row, index) {
                         return numUtil.toThousands(value);
                     }
                 },
-                {field: 'producer', title: '生产商', width: 150},
+                {field: 'producer', title: '生产商', width: 100},
                 {field: 'produceDate', title: '生产日期', width: 100},
-                {field: 'imgUrl', title: '图片', width: 150},
-                {field: 'creTime', title: '创建时间', width: 200},
-                {field: 'mdfTime', title: '修改时间', width: 200},
-                {field: 'creUser', title: '创建用户', width: 150},
-                {field: 'mdfUser', title: '修改用户', width: 150},
+                {field: 'imgUrl', title: '图片', width: 100},
+                {field: 'creTime', title: '创建时间', width: 150},
+                {field: 'mdfTime', title: '修改时间', width: 150},
+                {field: 'creUser', title: '创建用户', width: 100},
+                {field: 'mdfUser', title: '修改用户', width: 100},
                 {field: 'oper', title: '操作', width: 400,
                     formatter: function (value, row, index) {
                         return system.getOptBtn({title: "修改", event: page.getFucnAllName("modify", [index])})
@@ -134,6 +130,7 @@ page.goods.fucn = {
         jq.each(rows,function (i,n) {
             param.ids.push(n.id);
         });
+        console.log(param.ids);
         adminUI.confirm("删除商品","确认删除商品?",function (r) {
             if(!r){
                 return false;

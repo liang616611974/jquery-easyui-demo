@@ -81,9 +81,11 @@ page.goodsDetail.fucn = {
     upload : function () {
         var page = window.page.goodsDetail;
         var fileName = adminUI.getValue(page.get("img"));
-        //console.log(fileName);
         if(!fileName || fileName=="") {
             adminUI.alertInfo("请选择要上传的图片");
+            return false;
+        }
+        if(!adminUI.validateForm(page.get("multiFm"))){
             return false;
         }
         var url,param;
