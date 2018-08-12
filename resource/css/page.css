@@ -1,6 +1,7 @@
 .page{
     width: 100%;
     height: 100%;
+    overflow-y: auto;
     /*padding: 15px 10px 10px 15px;*/
 }
 
@@ -79,7 +80,7 @@
 /** 表格工具栏样式结束 **/
 
 
-/** 表格样式开始 **/
+/** dg表格样式开始 **/
 .dg-table {
     padding-left: 0px;
     width: 100%;
@@ -101,9 +102,9 @@
 .dg-table table tr{
     height: 40px;
 }
-/** 表格样式结束 **/
+/** dg表格样式结束 **/
 
-/** 表格按钮样式 **/
+/** dg表格按钮样式开始 **/
 .dg-opt-btn{
     margin-right: 15px;
     display: inline-block;
@@ -135,6 +136,91 @@
     border-color: #151516;
     /*background-color: #606266;*/
 }
+/** dg表格按钮样式结束 **/
 
+/** 文档表格样式开始 **/
+.table-center {
+    position: relative;
+    width: 800px;
+    height: auto;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table-center table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    /*border: 1px solid #dddddd;*/
+    border: 1px solid black;
+    text-align: center;
+}
+
+.table-center tr,.table-center td {
+   /* border: 1px solid #dddddd;*/
+    border: 1px solid black;
+}
+
+.table-center td {
+    padding: 10px 0px;
+}
+
+.table-center .title td {
+    font-size : 14px;
+    font-weight: bold;
+    background: #dddddd;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+.table-center .title-nobg td {
+    font-size : 14px;
+    font-weight: bold;
+}
+
+.table-center .td-list {
+    text-align: left;
+}
+
+.table-center .td-list ul{
+    padding: 0px;
+    margin-left: 30px;
+    list-style-type : square;
+}
+
+.table-center .td-list li {
+    margin-bottom: 10px;
+}
+
+.table-center .td-list-sort ul{
+    text-align: left;
+    list-style-type : decimal;
+}
+
+.table-center .td-list-sort li {
+    margin-bottom: 10px;
+}
+
+.table-center .td-list p{
+    margin : 10px 0 10px 13px;
+}
+
+.table-center .p-s-3 p span:nth-child(1){
+    display : inline-block;
+    width: 25%;
+}
+
+.table-center .p-s-3 p span:nth-child(2){
+    display : inline-block;
+    width: 40%;
+}
+
+.table-center .p-s-4 p span{
+    display : inline-block;
+    width: 20%;
+}
 
 

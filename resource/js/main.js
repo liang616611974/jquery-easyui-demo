@@ -47,6 +47,19 @@ var navTree = [{
                         "price": 100
                     },
                 }, {
+                    "id": 13,
+                    "text": "图片管理",
+                    "attributes": {
+                        "url": window.rootPage + "/common/picture.html",
+                        "price": 100
+                    }
+                }, {
+                    "id": 13,
+                    "text": "文档管理",
+                    "attributes": {
+                        "url": window.rootPage + "/common/document.html"
+                    }
+                }, {
                     "id": 12,
                     "text": "商品管理",
                     "attributes": {
@@ -54,13 +67,6 @@ var navTree = [{
                         "price": 100
                     },
 
-                }, {
-                    "id": 13,
-                    "text": "图片管理",
-                    "attributes": {
-                        "url": window.rootPage + "/common/picture.html",
-                        "price": 100
-                    }
                 }
             ]
         },
