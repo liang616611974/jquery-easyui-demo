@@ -33,10 +33,10 @@ page.dictDetail.fucn = {
         var action,url,param,msg;
         action = page.action;
         if(action=="add"){
-            url = "/dict/add";
+            url = "/dict/dict/add";
             msg = "新增成功";
         }else {
-            url = "/dict/modify";
+            url = "/dict/dict/modify";
             msg = "修改成功";
         }
         param = page.fm.serializeObject();

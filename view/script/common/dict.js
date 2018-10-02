@@ -14,7 +14,7 @@ page.dict.init = {
 
     initDg: function (page) {
         adminUI.datagrid(page.dg, {
-            url : '/dict/queryPage',
+            url : '/dict/dict/queryPage',
             queryParams: {sortColumns: "id desc,cre_time desc"},
             columns: [[
                 {field: 'ck', checkbox: true, width: 50},
@@ -111,7 +111,7 @@ page.dict.fucn = {
             if(!r){
                 return false;
             }
-            ajax.postJson("/dict/remove",param,function () {
+            ajax.postJson("/dict/dict/remove",param,function () {
                 adminUI.alertInfo("删除成功");
                 adminUI.reloadDg(page.dg);
             })
@@ -135,7 +135,7 @@ page.dict.fucn = {
             if(!r){
                 return false;
             }
-            ajax.postJson("/dict/remove",param,function () {
+            ajax.postJson("/dict/dict/remove",param,function () {
                 adminUI.alertInfo("删除成功");
                 adminUI.reloadDg(page.dg);
             })

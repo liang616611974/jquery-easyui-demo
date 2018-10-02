@@ -178,7 +178,7 @@ $.yxFin = (function () {
         setDicts:function () {
             // 查询字典 获取下拉框项等
             $.ajax({
-                url: '/dict/queryAll',
+                url: '/dict/dict/queryAll',
                 method: 'get',
                 async:false,
                 contentType: "application/json; charset=utf-8",

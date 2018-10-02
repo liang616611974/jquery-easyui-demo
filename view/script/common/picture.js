@@ -30,7 +30,7 @@ page.picture.fucn = {
             return false;
         }
         var url,param;
-        url = "/dict/common/uploadImg";
+        url = "/dict/dict/common/uploadImg";
         param = {dowloadName:"商品列表"};
         system.upload(page.get("multiFm"),url,param,function (data) {
             console.log(data.data);

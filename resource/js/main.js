@@ -21,7 +21,7 @@ jq(document).ready(function () {
         }
     });
     // 初始化字典数据
-    var dictUrl = "/dict/webCache"; // 获取字典的数据的接口
+    var dictUrl = "/dict/dict/webCache"; // 获取字典的数据的接口
     var dictParam = {sysCode: "SCD"}; // 获取字典的数据的接口的请求参数
     system.setDicts(dictUrl, dictParam, function (data) {
         //console.log(data.data);
